@@ -28,8 +28,8 @@ resource "google_storage_bucket" "logs_data_bucket" {
 
 resource "google_artifact_registry_repository" "repo-artifacts-genai" {
   location      = var.region
-  repository_id = "${var.project_name}-repo-dev"
-  description   = "Dev Repo for Generative AI applications"
+  repository_id = "${var.project_name}-repo-prod"
+  description   = "Prod Repo for Generative AI applications"
   format        = "DOCKER"
   project       = var.project_id
   depends_on    = [resource.google_project_service.services]

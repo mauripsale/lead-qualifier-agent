@@ -89,6 +89,7 @@ steps:
       - "--allow-unauthenticated"
 
 substitutions:
+  _ARTIFACT_REGISTRY_REPO_NAME: randstad-adk-repo-staging
   _REGION: us-central1
   _CONTAINER_NAME: randstad-adk
 

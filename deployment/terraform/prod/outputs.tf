@@ -12,23 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-terraform {
-  required_version = ">= 1.0.0"
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "~> 7.13.0"
-    }
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3.7.0"
-    }
-  }
+output "app_service_account_email" {
+  description = "Application service account email"
+  value       = google_service_account.app_sa.email
 }
 
-provider "google" {
-  alias                 = "dev_billing_override"
-  billing_project       = var.project_id
-  region = var.region
-  user_project_override = true
+output "logs_bucket_name" {
+  description = "Logs storage bucket name"
+  value       = google_storage_bucket.logs_data_bucket.name
 }

@@ -19,7 +19,7 @@ data "google_project" "project" {
 
 
 resource "google_cloud_run_v2_service" "app" {
-  name                = "${var.project_name}-dev"
+  name                = "${var.project_name}-staging"
   location            = var.region
   project             = var.project_id
   deletion_protection = false

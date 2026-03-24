@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-output "telemetry_dataset_id" {
-  description = "BigQuery dataset ID for telemetry data"
-  value       = { for k, v in google_bigquery_dataset.telemetry_dataset : k => v.dataset_id }
+output "cloud_run_service_url" {
+  description = "Cloud Run service URL"
+  value       = google_cloud_run_v2_service.app.uri
 }
 
-output "telemetry_bigquery_connection_id" {
-  description = "BigQuery connection ID for telemetry GCS access"
-  value       = { for k, v in google_bigquery_connection.genai_telemetry_connection : k => v.connection_id }
+output "cloud_run_service_name" {
+  description = "Cloud Run service name"
+  value       = google_cloud_run_v2_service.app.name
 }
