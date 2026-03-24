@@ -39,9 +39,12 @@ session_service_uri = None
 
 artifact_service_uri = f"gs://{logs_bucket_name}" if logs_bucket_name else None
 
+# Check if web UI should be enabled (defaults to True if not specified)
+enable_web_ui = os.getenv("ENABLE_WEB_UI", "True").lower() == "true"
+
 app: FastAPI = get_fast_api_app(
     agents_dir=AGENT_DIR,
-    web=True,
+    web=enable_web_ui,
     artifact_service_uri=artifact_service_uri,
     allow_origins=allow_origins,
     session_service_uri=session_service_uri,

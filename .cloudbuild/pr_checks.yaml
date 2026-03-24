@@ -89,6 +89,8 @@ steps:
       - "--allow-unauthenticated"
       - "--tag"
       - "pr-${_PR_NUMBER}"
+      - "--env-vars-file"
+      - "conf/dev/.env"
 
 substitutions:
   _ARTIFACT_REGISTRY_REPO_NAME: randstad-adk-repo-dev
