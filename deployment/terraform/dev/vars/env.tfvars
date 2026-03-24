@@ -2,7 +2,7 @@
 project_name = "randstad-adk"
 
 # Your Dev Google Cloud project id
-project_id = "your-gcp-project-id"
+project_id = "dt-mirko-sandbox-dev"
 
 # The Google Cloud region you will use to deploy the infrastructure
-region = "us-central1"
+region = "europe-west2"
