@@ -90,7 +90,7 @@ steps:
 
 substitutions:
   _ARTIFACT_REGISTRY_REPO_NAME: randstad-adk-repo-staging
-  _REGION: us-central1
+  _REGION: europe-west2
   _CONTAINER_NAME: randstad-adk
 
 logsBucket: gs://${PROJECT_ID}-randstad-adk-logs/build-logs
