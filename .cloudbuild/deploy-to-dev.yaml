@@ -45,25 +45,14 @@ steps:
       - "$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/$_SERVICE_NAME-dev:$COMMIT_SHA"
       - "."
 
-  # 4) Verify or create infrastructure with Terraform
-  - name: "hashicorp/terraform:1.5.0"
-    id: terraform-infra
-    entrypoint: /bin/sh
-    args:
-      - "-c"
-      - |
-        cd deployment/terraform
-        terraform init -backend-config="bucket=$PROJECT_ID-tfstate" -backend-config="prefix=terraform/state/dev" -reconfigure
-        terraform apply -var-file=vars/dev.tfvars -var="project_id=$PROJECT_ID" -auto-approve
-
-  # 5) Push the image to Artifact Registry
+  # 4) Push the image to Artifact Registry
   - name: "gcr.io/cloud-builders/docker"
     id: push-image
     args:
       - "push"
       - "$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/$_SERVICE_NAME-dev:$COMMIT_SHA"
 
-  # 6) Deploy to Cloud Run
+  # 5) Deploy to Cloud Run
   - name: "gcr.io/cloud-builders/gcloud"
     id: deploy-app
     entrypoint: /bin/bash
@@ -77,22 +66,9 @@ steps:
           --no-allow-unauthenticated \
           --service-account "$_SERVICE_NAME-app-dev@$PROJECT_ID.iam.gserviceaccount.com" \
           --max-instances 10 \
-          --min-instances 1 \
-          --session-affinity \
+          --min-instances 0 \
           --update-env-vars "FIRESTORE_DATABASE_ID=lead-qualifier-db-dev,LOGS_BUCKET_NAME=$PROJECT_ID-$_SERVICE_NAME-dev-logs,OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT=NO_CONTENT"
 
-  # 7) Health check verification
-  - name: "gcr.io/cloud-builders/gcloud"
-    id: verify-deployment
-    entrypoint: /bin/bash
-    args:
-      - "-c"
-      - |
-        SERVICE_URL=$$(gcloud run services describe $_SERVICE_NAME-dev --platform managed --region $_REGION --format 'value(status.url)')
-        echo "Verifying service at $$SERVICE_URL"
-        # Wait a few seconds for the service to be fully ready
-        sleep 5
-        curl -s -f -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $$(gcloud auth print-identity-token)" $$SERVICE_URL/health | grep 200
 
 substitutions:
   _REPO_NAME: randstad-adk-repo-dev
