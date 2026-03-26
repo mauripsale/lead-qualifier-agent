@@ -24,7 +24,7 @@ steps:
     env:
       - 'PATH=/usr/local/bin:/usr/bin:~/.local/bin'
 
-  # 2) Esegue gli unit test
+  # 2) Run unit test
   - name: "python:3.12-slim"
     id: unit-tests
     entrypoint: /bin/bash
