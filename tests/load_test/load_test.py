@@ -45,10 +45,10 @@ class ChatStreamUser(HttpUser):
         headers = {"Content-Type": "application/json"}
         if os.environ.get("_ID_TOKEN"):
             headers["Authorization"] = f"Bearer {os.environ['_ID_TOKEN']}"
-        
+
         # SSL Verification toggle
         verify_ssl = os.environ.get("LOCUST_SKIP_CERT_VERIFY", "").lower() != "true"
-        
+
         # Create session first
         user_id = f"user_{uuid.uuid4()}"
         session_data = {"state": {"preferred_language": "English", "visit_count": 1}}
@@ -65,11 +65,11 @@ class ChatStreamUser(HttpUser):
                 session_response.failure(f"Failed to create session: {session_response.status_code} - {session_response.text[:100]}")
                 logger.error("Session creation failed: %s - %s", session_response.status_code, session_response.text)
                 return
-            
+
             try:
                 session_id = session_response.json()["id"]
             except (json.JSONDecodeError, KeyError) as e:
-                session_response.failure(f"Invalid JSON in session response: {str(e)}")
+                session_response.failure(f"Invalid JSON in session response: {e!s}")
                 logger.error("Invalid session response JSON: %s", session_response.text)
                 return
 

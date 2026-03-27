@@ -12,13 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sys
 import os
+import sys
 
 # Aggiunge la radice del progetto al path per permettere l'importazione dei moduli
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from utils.api_client import RandstadApiClient
+
 
 def main():
     """
@@ -47,7 +48,7 @@ def main():
     message = "Ciao! Al momento lavoriamo con un competitor e abbiamo circa 50 lavoratori."
     print(f"\n--- 3. Sending Message: '{message}' ---")
     print("Response: ", end="", flush=True)
-    
+
     try:
         for event in client.chat_stream(user_id, session_id, message):
             # In ADK, il contenuto testuale è sotto 'content' -> 'parts'
@@ -58,7 +59,7 @@ def main():
                         print(part["text"], end="", flush=True)
     except Exception as e:
         print(f"\n❌ Error during streaming: {e}")
-    
+
     print("\n\n--- 4. Sending Feedback ---")
     if client.send_feedback(user_id, session_id, 5, "L'agente ha riconosciuto correttamente il competitor!"):
         print("✅ Feedback sent successfully")

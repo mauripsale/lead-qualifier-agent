@@ -14,9 +14,8 @@
 # limitations under the License.
 
 """
-Questo modulo definisce l'agente commerciale B2B utilizzando Google Agent Development Kit (ADK).
-Configura l'autenticazione GCP, le impostazioni del modello Vertex AI Gemini,
-i filtri di sicurezza e collega l'istruzione di base (prompts.py) con lo strumento di salvataggio su Firestore.
+Entry point dell'applicazione ADK.
+Qui viene definito l'agente principale (Root Agent) e orchestrata la delegazione.
 """
 
 import os
@@ -25,20 +24,20 @@ import google.auth
 from google.adk.agents import Agent
 from google.adk.apps import App
 from google.adk.models import Gemini
+from google.adk.tools import AgentTool
 from google.genai import types
 
 from .tools import salva_qualificazione
 from .prompts import INSTRUCTION
+from .agents.researcher import ricercatore_azienda
 
-# Recupera il project ID tramite le credenziali default di GCP e lo imposta nell'ambiente
+# Configurazione ambiente GCP
 _, project_id = google.auth.default()
 os.environ["GOOGLE_CLOUD_PROJECT"] = project_id
 os.environ["GOOGLE_CLOUD_LOCATION"] = "global"
 os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "True"
 
-# Impostiamo i filtri di sicurezza (Responsible AI) per bloccare contenuti non sicuri.
-# Questo è fondamentale per garantire che l'agente commerciale rimanga sempre appropriato 
-# e focalizzato sul proprio obiettivo aziendale.
+# Safety settings comuni
 safety_settings = [
     types.SafetySetting(
         category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
@@ -58,24 +57,23 @@ safety_settings = [
     ),
 ]
 
-# Definizione del Root Agent principale dell'applicazione (ADK)
-# Questo agente utilizza Gemini Flash con una temperatura bassa (0.2)
-# per garantire risposte il più deterministiche possibile in un contesto commerciale.
+# Root Agent: Il "Direttore d'orchestra"
 root_agent = Agent(
     name="qualificatore_commerciale",
     model=Gemini(
         model="gemini-3-flash-preview",
-        retry_options=types.HttpRetryOptions(attempts=3),
         config=types.GenerateContentConfig(
-            temperature=0.2, # Manteniamo una temperatura bassa per decisioni commerciali coerenti
+            temperature=0.2,
             safety_settings=safety_settings,
         )
     ),
     instruction=INSTRUCTION,
-    tools=[salva_qualificazione], # Tool associato all'agente per storicizzare la qualificazione su Firestore
+    tools=[
+        salva_qualificazione,
+        AgentTool(ricercatore_azienda) # Delegazione modulare
+    ],
 )
 
-# Definizione e registrazione dell'App ADK
 app = App(
     root_agent=root_agent,
     name="app",

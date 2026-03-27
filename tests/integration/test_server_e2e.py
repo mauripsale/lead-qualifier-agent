@@ -61,7 +61,7 @@ def start_server() -> subprocess.Popen[str]:
     # Assicuriamoci che il server dei test scriva in un database isolato se specificato
     if "FIRESTORE_DATABASE_ID" not in env:
         env["FIRESTORE_DATABASE_ID"] = "lead-qualifier-db-dev"
-    
+
     process = subprocess.Popen(
         command,
         stdout=subprocess.PIPE,
@@ -160,7 +160,7 @@ def test_chat_stream(server_fixture: subprocess.Popen[str]) -> None:
         STREAM_URL, headers=HEADERS, json=data, stream=True, timeout=60
     )
     assert response.status_code == 200
-    
+
     events = []
     for line in response.iter_lines():
         if line:
@@ -170,11 +170,11 @@ def test_chat_stream(server_fixture: subprocess.Popen[str]) -> None:
                 events.append(event)
 
     assert len(events) > 0, "No events received from stream"
-    
+
     # Check for text content
     has_text = any(
-        part.get("text") 
-        for e in events if e.get("content") 
+        part.get("text")
+        for e in events if e.get("content")
         for part in e["content"].get("parts", [])
     )
     assert has_text, "Expected at least one event with text content"
