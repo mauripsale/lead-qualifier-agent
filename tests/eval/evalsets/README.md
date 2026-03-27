@@ -1,80 +1,57 @@
-# Evaluation Sets
+# Laboratorio di Valutazione (Agent Evaluation)
 
-This directory contains evaluation sets for testing agent behavior using `adk eval`.
+Questa cartella contiene gli **Evalset**, gli strumenti fondamentali per misurare la "intelligenza" e la qualità dell'agente ADK utilizzando un approccio **LLM-as-a-Judge**.
 
-## Running Evaluations
+## Cos'è un Evalset?
+A differenza degli Unit Test tradizionali, un Evalset non controlla solo se il codice funziona, ma valuta il **comportamento** dell'agente. Un modello di IA (il "Giudice") analizza le risposte del nostro agente rispetto a delle aspettative predefinite e assegna un punteggio.
+
+## Come eseguire le valutazioni
 
 ```bash
-# Run default evalset
+# Esegue l'evalset predefinito (lead_qualifier.evalset.json)
 make eval
 
-# Run specific evalset
-make eval EVALSET=tests/eval/evalsets/custom.evalset.json
-
-# Run all evalsets
+# Esegue tutti gli evalset presenti nella cartella
 make eval-all
+
+# Esegue un file specifico
+make eval EVALSET=tests/eval/evalsets/search_and_modular.evalset.json
 ```
 
-## Evalset Format
+## Struttura Multi-Agente e Delegazione
+I nostri test sono progettati per validare l'architettura a due livelli:
+1.  **Orchestrazione**: L'agente principale deve capire quando delegare la ricerca al sub-agente `ricercatore_azienda`.
+2.  **Propagazione dati**: Verifichiamo che le informazioni trovate dal ricercatore vengano effettivamente usate nel tool di salvataggio e nella chiusura della telefonata.
 
-Each `.evalset.json` follows the ADK evaluation format:
+## Metriche e Rubriche Qualitative
+Oltre a verificare le chiamate ai tool, usiamo rubriche personalizzate definite in `eval_config.json`:
+
+*   **`politeness`**: Valuta se l'agente mantiene un tono professionale e ringrazia l'utente.
+*   **`personalization`**: Controlla se l'agente cita dettagli specifici emersi dalla ricerca (es. brand iconici o sedi aziendali).
+*   **`research_usage`**: Misura la qualità dell'orchestrazione, assicurandosi che la ricerca avvenga prima del salvataggio dei dati.
+
+## Formato del file JSON
 
 ```json
 {
-  "eval_set_id": "unique_id",
-  "name": "Human-readable name",
-  "description": "What this evalset tests",
-  "eval_cases": [
+  "eval_id": "nome_test",
+  "conversation": [
     {
-      "eval_id": "case_id",
-      "conversation": [
-        {
-          "user_content": {
-            "parts": [{"text": "User message"}]
-          },
-          "intermediate_data": {
-            "tool_uses": [
-              {"name": "tool_name", "args": {"param": "value"}}
-            ]
-          }
-        }
-      ],
-      "session_input": {
-        "app_name": "app_name",
-        "user_id": "test_user",
-        "state": {}
+      "user_content": { "parts": [{ "text": "Messaggio utente" }] },
+      "intermediate_data": {
+        "tool_uses": [
+          { "name": "nome_tool", "args": { "param": "valore" } }
+        ]
       }
     }
   ]
 }
 ```
 
-## Key Fields
+## Valore Didattico
+Studiare questi file aiuta a capire che:
+1.  **Il successo non è binario**: Un agente può funzionare tecnicamente ma fallire qualitativamente.
+2.  **Feedback Loop**: I risultati degli Eval guidano il raffinamento dei Prompt (Prompt Engineering).
+3.  **Rigorosità**: Un sistema AI moderno deve essere misurabile e ripetibile.
 
-- `eval_cases`: Array of test scenarios
-- `conversation`: Sequence of user messages
-- `intermediate_data.tool_uses`: Expected tool calls (for trajectory matching)
-- `session_input`: Initial session state
-
-## Evaluation Metrics
-
-ADK eval measures:
-
-- **tool_trajectory_avg_score**: Are the correct tools called in the right order?
-- **response_match_score**: How similar is the response to expected output?
-
-## Creating Custom Evalsets
-
-1. Copy `basic.evalset.json` as a template
-2. Add cases based on your `DESIGN_SPEC.md` scenarios
-3. Include expected tool calls for capability tests
-4. Run `make eval EVALSET=your_evalset.json`
-
-## Tips
-
-- Start with 3-5 representative cases
-- Include both happy path and edge cases
-- Test each core capability from DESIGN_SPEC.md
-- Add cases when you find bugs in production
-
-See [ADK documentation](https://google.github.io/adk-docs/) for advanced evaluation options.
+Per approfondimenti sulla configurazione delle metriche, consulta il file `tests/eval/eval_config.json`.

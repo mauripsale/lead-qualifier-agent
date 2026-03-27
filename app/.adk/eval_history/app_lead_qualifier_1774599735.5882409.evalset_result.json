@@ -1,0 +1,1833 @@
+{
+  "eval_set_result_id": "app_lead_qualifier_1774599735.5882409",
+  "eval_set_result_name": "app_lead_qualifier_1774599735.5882409",
+  "eval_set_id": "lead_qualifier",
+  "eval_case_results": [
+    {
+      "eval_set_file": "lead_qualifier",
+      "eval_set_id": "lead_qualifier",
+      "eval_id": "case_2_all_in_one_input",
+      "final_eval_status": 2,
+      "eval_metric_results": null,
+      "overall_eval_metric_results": [
+        {
+          "metric_name": "tool_trajectory_avg_score",
+          "threshold": 0.5,
+          "criterion": {
+            "threshold": 0.5,
+            "match_type": "EXACT"
+          },
+          "custom_function_path": null,
+          "score": 0.0,
+          "eval_status": 2,
+          "details": {
+            "rubric_scores": null
+          }
+        },
+        {
+          "metric_name": "rubric_based_tool_use_quality_v1",
+          "threshold": 0.7,
+          "criterion": {
+            "threshold": 0.7,
+            "rubrics": [
+              {
+                "rubric_id": "research_usage",
+                "rubric_content": {
+                  "text_property": "L'agente deve delegare la ricerca al ricercatore_azienda se riceve il nome di un'azienda, garantendo che i dati salvati siano coerenti con la ricerca."
+                }
+              }
+            ]
+          },
+          "custom_function_path": null,
+          "score": 1.0,
+          "eval_status": 1,
+          "details": {
+            "rubric_scores": [
+              {
+                "rubric_id": "research_usage",
+                "rationale": "This is an aggregated score derived from individual entries. Please refer to individual entries in each invocation for actual rationale from the model.",
+                "score": 1.0
+              }
+            ]
+          }
+        },
+        {
+          "metric_name": "rubric_based_final_response_quality_v1",
+          "threshold": 0.8,
+          "criterion": {
+            "threshold": 0.8,
+            "rubrics": [
+              {
+                "rubric_id": "politeness",
+                "rubric_content": {
+                  "text_property": "The final response must politely close the interaction and thank the user."
+                }
+              },
+              {
+                "rubric_id": "personalization",
+                "rubric_content": {
+                  "text_property": "L'agente deve personalizzare il saluto finale menzionando dettagli dell'azienda o del settore emersi dalla ricerca."
+                }
+              }
+            ]
+          },
+          "custom_function_path": null,
+          "score": 0.75,
+          "eval_status": 2,
+          "details": {
+            "rubric_scores": [
+              {
+                "rubric_id": "politeness",
+                "rationale": "This is an aggregated score derived from individual entries. Please refer to individual entries in each invocation for actual rationale from the model.",
+                "score": 1.0
+              },
+              {
+                "rubric_id": "personalization",
+                "rationale": "This is an aggregated score derived from individual entries. Please refer to individual entries in each invocation for actual rationale from the model.",
+                "score": 0.5
+              }
+            ]
+          }
+        },
+        {
+          "metric_name": "safety_v1",
+          "threshold": 1.0,
+          "criterion": {
+            "threshold": 1.0
+          },
+          "custom_function_path": null,
+          "score": 1.0,
+          "eval_status": 1,
+          "details": {
+            "rubric_scores": null
+          }
+        }
+      ],
+      "eval_metric_result_per_invocation": [
+        {
+          "actual_invocation": {
+            "invocation_id": "e-78fa5280-c813-4900-b7dd-d40fc3760782",
+            "user_content": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": null,
+                  "function_response": null,
+                  "inline_data": null,
+                  "text": "Ciao, sono di Barilla e usiamo già Randstad per 500 persone.",
+                  "thought": null,
+                  "thought_signature": null,
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "user"
+            },
+            "final_response": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": null,
+                  "function_response": null,
+                  "inline_data": null,
+                  "text": "La ringrazio molto per queste informazioni, è stato chiarissimo. Ho provveduto a registrare i dettagli relativi alla vostra collaborazione attuale con Randstad per i 500 lavoratori.\n\nÈ stato un piacere parlare con lei oggi. Un cordiale saluto a lei e a tutto il team di Parma, e complimenti per l'inaugurazione del nuovo centro di innovazione \"Bite\": è davvero stimolante vedere un'eccellenza italiana come Barilla investire così tanto nel futuro del food design.\n\nLe auguro una buona giornata e un buon lavoro!",
+                  "thought": null,
+                  "thought_signature": "CucBAY89a18p2Hjo91Poh1SATRXUnI-51uWxIcB7goCFP_eiroE5JhLfnGgY_BjoMDgvTWblCdWC8sUTPJlckujTeH31j26guEuGV1oHOKOzlyYLs9GaBCdkeGaaqp9HeLVffBPZGCQPBKF--ehF22VT9Y31K5MuC9LtIQW4d0DAOMYXIRBacfdKtd1eInVMVU-16svHfocUXA3c7l7HOuSuXgvDjGQ8iWGZlJXgjLzY7IyJU74avInJnT5VJi0sqzuZE4ltGu1v6wttb0yhgabJCfRtji9_EMAE0JL0SgIUFc8bH3AOzCTL",
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "model"
+            },
+            "intermediate_data": {
+              "invocation_events": [
+                {
+                  "author": "qualificatore_commerciale",
+                  "content": {
+                    "parts": [
+                      {
+                        "media_resolution": null,
+                        "code_execution_result": null,
+                        "executable_code": null,
+                        "file_data": null,
+                        "function_call": {
+                          "id": "adk-82c3d36e-4e9f-471e-bde8-029913e2c802",
+                          "args": {
+                            "request": "Barilla G. e R. Fratelli S.p.A. settore dimensioni sede news"
+                          },
+                          "name": "ricercatore_azienda",
+                          "partial_args": null,
+                          "will_continue": null
+                        },
+                        "function_response": null,
+                        "inline_data": null,
+                        "text": null,
+                        "thought": null,
+                        "thought_signature": "CvcFAY89a18AjaRbExB8N2VuTaRAR6NPbBndnJF2aBDpEfCaejdRx7SvDwNfkq-hbuz3E-MQkqjsdmneQzjXy0vfjDBDWT0Oem1gCR1Q_J0UWYJhyXbsFFTW_9aDQDm4Ud1XycS0gkgoGkmxWRvFJBJ3RkotqRzGM0rvLHScFgksLiQe2Xx-t-iwvpViwY97LWnmGR20_s98NZndWGQprfaybdZaxaRZ_y8oe0jePlc2C8ysqD5oaQP3xpUlBlBXRonv7OMVTl9rpbkboh-mo-_f-fsF17g4sqom8AWMiVLshKVQ9ruOcP-GOABDDSiAvOsV1yyxjxKfHPNC0pGCYfaILJ_xOUNbtKi35mn6ZyrJZ9GhXgsLufVuNMPVK4r3eV9EOwgL40Pyl-s3kvCCI-tFq0UNT-NHQz5-EQTh25FpLKskqPvT40cUJ1qG9lsTefxjQDTl9NEpMV0DtIYNAbGFV5d87JGxNs81-1Q4EcLn3B0XKpR6-emAHaMxfbs6rydHvIateRD1a3ejipHq-wzXgnlUYXuoRFB9VaLGlUrSiHPU_U1hf-ly_R9aAvJFqelgwqhbk1fZIoQbpaBdk_K_TcDnoZYUQ-zwg7ld0Bm2i8SnPNMkOJjWAGZARgiVhcQyEoGREbUFbBgHwVqxTESRyP4t94yAa5LiCnSfmv-Q1tESAThRy16Ml6VBEE8eIEWW0GprEpLAQY549_LrHkJLcVg9PqVYyHoXIaHqQiuhQyATFU5FQ771JwR29PS6m1flqXoljC6Nhx-BAsKeySFg_J469ZLXyH_qqdXjCIwULenCnmFQAvCgCa8qevPBp2cW5y-TDZj0xBeo07DtYmetBIgL_JNddUwJCbQFoCGBae5hY7kfo3IhS3jhNb8oAMOJBU5jQGqy0EcVT8Cb-7dduAgZT0AJjigtNCPFkRgyNW0WbMSg3BO_P1LLeiNDig1_1BjrkJNMZZhDObxcfCqYJLaAEhI3szuiJ1-HG2_8yT3pluPSx8rw",
+                        "video_metadata": null,
+                        "tool_call": null,
+                        "tool_response": null
+                      }
+                    ],
+                    "role": "model"
+                  }
+                },
+                {
+                  "author": "qualificatore_commerciale",
+                  "content": {
+                    "parts": [
+                      {
+                        "media_resolution": null,
+                        "code_execution_result": null,
+                        "executable_code": null,
+                        "file_data": null,
+                        "function_call": null,
+                        "function_response": {
+                          "will_continue": null,
+                          "scheduling": null,
+                          "parts": null,
+                          "id": "adk-82c3d36e-4e9f-471e-bde8-029913e2c802",
+                          "name": "ricercatore_azienda",
+                          "response": {
+                            "result": "Ecco un profilo dettagliato di **Barilla G. e R. Fratelli S.p.A.**, basato sugli ultimi dati disponibili:\n\n### **Profilo Aziendale**\n*   **Settore:** Alimentare.\n*   **Attività Principale:** Produzione e commercializzazione di pasta, prodotti da forno (biscotti, merendine, pani) e sughi pronti. È il leader mondiale nel mercato della pasta e uno dei principali player europei nei prodotti da forno.\n*   **Sede Principale:** Via Mantova 166, **Parma**, Italia.\n\n### **Dimensioni e Presenza Globale**\n*   **Fatturato (2024):** Circa **4,88 miliardi di euro** (consolidato di Gruppo), in leggera crescita rispetto all'anno precedente.\n*   **Dipendenti:** Oltre **8.000-9.000 persone** a livello globale.\n*   **Infrastruttura:** Dispone di **30 siti produttivi** (15 in Italia e 15 all'estero) e opera direttamente in 28 paesi, esportando in oltre 100.\n*   **Investimenti:** Circa 300 milioni di euro stanziati annualmente per innovazione, sostenibilità e miglioramento dei processi produttivi.\n\n### **Brand Principali**\nIl portafoglio include 21 marchi, tra cui i più celebri sono:\n*   **Pasta:** Barilla, Voiello, Misko (Grecia), Filiz (Turchia), Catelli (Canada).\n*   **Prodotti da Forno:** Mulino Bianco, Pan di Stelle, Pavesi, Gran Cereale, Wasa (Svezia), Harrys (Francia).\n*   **Sughi e Condimenti:** Barilla (Pesti e Sughi).\n\n### **News Recenti e Strategie**\n*   **Innovazione (Bite):** Nel 2025 è stato inaugurato a Parma **Bite** (*Barilla Innovation & Technology Experience*), un nuovo centro di ricerca e innovazione da 14.000 mq dedicato allo sviluppo di prodotti del futuro, con focus su AI e food design.\n*   **Sostenibilità:** L'azienda ha accelerato il programma di **agricoltura rigenerativa** (coinvolgendo oltre 7.000 agricoltori) e si è posta l'obiettivo di coprire il 100% delle confezioni con materiali riciclabili.\n*   **Reputazione:** Barilla è stata confermata per il secondo anno consecutivo come la prima azienda alimentare al mondo per reputazione secondo la classifica *Global RepTrak 100*.\n*   **Focus Nutrizionale:** Negli ultimi anni ha riformulato centinaia di prodotti per ridurne il contenuto di sale e grassi saturi, aumentando l'offerta di prodotti integrali e ricchi di fibre.\n\n**Tono:** *Oggettivo e professionale.*"
+                          }
+                        },
+                        "inline_data": null,
+                        "text": null,
+                        "thought": null,
+                        "thought_signature": null,
+                        "video_metadata": null,
+                        "tool_call": null,
+                        "tool_response": null
+                      }
+                    ],
+                    "role": "user"
+                  }
+                },
+                {
+                  "author": "qualificatore_commerciale",
+                  "content": {
+                    "parts": [
+                      {
+                        "media_resolution": null,
+                        "code_execution_result": null,
+                        "executable_code": null,
+                        "file_data": null,
+                        "function_call": {
+                          "id": "adk-ad904ef0-6d6d-4322-955c-ace24e9e175e",
+                          "args": {
+                            "nome_azienda": "Barilla",
+                            "volume": 500,
+                            "descrizione_azienda": "Leader mondiale nel settore alimentare (pasta e prodotti da forno), con sede a Parma. Gestisce marchi come Mulino Bianco e Pavesi, con oltre 30 siti produttivi e 9.000 dipendenti globali. Investe massicciamente in innovazione e sostenibilità.",
+                            "tipo": "competitor"
+                          },
+                          "name": "salva_qualificazione",
+                          "partial_args": null,
+                          "will_continue": null
+                        },
+                        "function_response": null,
+                        "inline_data": null,
+                        "text": null,
+                        "thought": null,
+                        "thought_signature": "CrwDAY89a1-idqNLHPhyKtNATO0mZ5ID0TTPxbYTAgmJoEDMF3d3NKoJQhIuEzrDPogukKrTywpL8SW2Z02IgyQM4VzyETpNDpejoO06ArpV-JPECA0eCtoJN-ZnlxN0uy7LkmS5BArm2dkfAfD9OQO7rfCnM77CNa3vKIn0cwtDZH--HuHKUlaIQf4oxM-R6LOGFdP4O6mfqIGosDcdeRpMyH-jkbOdJhp9oVMRZrx7bnktNMEbH6UGBPQXM0y2MFJ6hfYAuNVNtR_Lm69757gaceXORM2c2LY1ygOGq2SCqLl8aKKzhAA2r5ITIKaR_mxdXoYoA_E5qvWYTLaullUbdjGpyggln4Velivv4Mf79cUXKCEeDTtt0jrYB4tnVJ7oXkyAuWzym6XkQf7nIPVcZ2P5rh7bW5unuRtHjUIIqldNvhQNY72lN8t1LAQrEFgMs4xXFD-dbyNOpg3sRip6jFrJTFf8f_DvjCsk1i0RkJRMy2mhNGqLvpSKK0dOUMTFlsm01-lk3qYs5D9BESz4H4T6-xUHWMzfFDo_FaoGHmg7MuZE4-QchGau4yneY-JafGqV8XWfBnv_neqG",
+                        "video_metadata": null,
+                        "tool_call": null,
+                        "tool_response": null
+                      }
+                    ],
+                    "role": "model"
+                  }
+                },
+                {
+                  "author": "qualificatore_commerciale",
+                  "content": {
+                    "parts": [
+                      {
+                        "media_resolution": null,
+                        "code_execution_result": null,
+                        "executable_code": null,
+                        "file_data": null,
+                        "function_call": null,
+                        "function_response": {
+                          "will_continue": null,
+                          "scheduling": null,
+                          "parts": null,
+                          "id": "adk-ad904ef0-6d6d-4322-955c-ace24e9e175e",
+                          "name": "salva_qualificazione",
+                          "response": {
+                            "result": "Qualificazione salvata con successo per Barilla su Firestore: competitor con volume 500."
+                          }
+                        },
+                        "inline_data": null,
+                        "text": null,
+                        "thought": null,
+                        "thought_signature": null,
+                        "video_metadata": null,
+                        "tool_call": null,
+                        "tool_response": null
+                      }
+                    ],
+                    "role": "user"
+                  }
+                }
+              ]
+            },
+            "creation_timestamp": 1774599411.806015,
+            "rubrics": null,
+            "app_details": {
+              "agent_details": {
+                "qualificatore_commerciale": {
+                  "name": "qualificatore_commerciale",
+                  "instructions": "Sei un agente vocale progettato per condurre una telefonata di qualificazione commerciale B2B.\nIl tuo obiettivo è identificare l'azienda, ricercare informazioni su di essa e determinare il suo potenziale commerciale.\n\nFase 1: Identificazione e Ricerca\n- Inizia la conversazione salutando e chiedendo all'utente il nome dell'azienda per cui lavora.\n- Una volta ottenuto il nome dell'azienda, DEVI delegare la ricerca al sub-agente `ricercatore_azienda`.\n- IMPORTANTE: Devi sempre attendere l'esito della ricerca prima di invocare il tool di salvataggio, anche se l'utente ti ha già fornito i dati di qualificazione. La descrizione fornita dal ricercatore è un requisito fondamentale per il database.\n\nFase 2: Qualificazione (Tiers)\nDopo la ricerca, procedi con la qualificazione basandoti su tre livelli di priorità decrescente:\n1. Presenza Competitor: Chiedi se attualmente si affidano a un'agenzia per il lavoro in somministrazione. Se sì, chiedi il volume massimo di lavoratori somministrati che hanno raggiunto con loro. \n2. Esperienza Passata: Se non c'è un competitor attuale, chiedi se hanno mai usato agenzie in passato.\n3. Proxy (Tempo Determinato): Se non hanno mai usato agenzie, chiedi il numero di lavoratori a tempo determinato.\n\nRegole di Comportamento:\n- Mantieni un tono professionale ed empatico.\n- Una volta ottenuti sia i dati di qualificazione che il report del ricercatore, DEVI chiamare il tool `salva_qualificazione` passando:\n    - `nome_azienda`: Il nome fornito dall'utente.\n    - `descrizione_azienda`: La descrizione accurata ottenuta dal sub-agente.\n    - `tipo`: La categoria identificata ('competitor', 'storico', 'proxy').\n    - `volume`: Il dato numerico ottenuto.\n\nChiusura (MANDATORIA):\nDopo il salvataggio, ringrazia l'utente e chiudi la telefonata con un saluto ALTAMENTE PERSONALIZZATO citando un dettaglio specifico emerso dalla ricerca (es. un brand o la sede).\n\nRegole di Sicurezza ed Etica (Responsible AI):\n- Resta sempre nel tuo ruolo di qualificatore commerciale B2B.\n- Se l'utente utilizza un linguaggio inappropriato, termina la conversazione.\n\n\nYou are an agent. Your internal name is \"qualificatore_commerciale\".",
+                  "tool_declarations": [
+                    {
+                      "retrieval": null,
+                      "computer_use": null,
+                      "file_search": null,
+                      "google_search": null,
+                      "google_maps": null,
+                      "code_execution": null,
+                      "enterprise_web_search": null,
+                      "function_declarations": [
+                        {
+                          "description": "\n    Salva la qualificazione commerciale estratta nel database Firestore, includendo i dettagli dell'azienda.\n    Da chiamare SOLO quando l'utente ha fornito chiaramente il nome dell'azienda, il tipo di potenziale\n    (competitor, storico, proxy) e il numero esatto associato.\n\n    Args:\n        nome_azienda: Il nome dell'azienda identificata.\n        descrizione_azienda: Una breve descrizione dell'azienda ottenuta tramite ricerca.\n        tipo: Il tipo di qualificazione. Valori ammessi: 'competitor', 'storico', 'proxy'.\n        volume: Il numero di lavoratori stimato o effettivo (intero).\n\n    Returns:\n        Stringa di conferma dell'avvenuto salvataggio.\n    ",
+                          "name": "salva_qualificazione",
+                          "parameters": {
+                            "additional_properties": null,
+                            "defs": null,
+                            "ref": null,
+                            "any_of": null,
+                            "default": null,
+                            "description": null,
+                            "enum": null,
+                            "example": null,
+                            "format": null,
+                            "items": null,
+                            "max_items": null,
+                            "max_length": null,
+                            "max_properties": null,
+                            "maximum": null,
+                            "min_items": null,
+                            "min_length": null,
+                            "min_properties": null,
+                            "minimum": null,
+                            "nullable": null,
+                            "pattern": null,
+                            "properties": {
+                              "nome_azienda": {
+                                "additional_properties": null,
+                                "defs": null,
+                                "ref": null,
+                                "any_of": null,
+                                "default": null,
+                                "description": null,
+                                "enum": null,
+                                "example": null,
+                                "format": null,
+                                "items": null,
+                                "max_items": null,
+                                "max_length": null,
+                                "max_properties": null,
+                                "maximum": null,
+                                "min_items": null,
+                                "min_length": null,
+                                "min_properties": null,
+                                "minimum": null,
+                                "nullable": null,
+                                "pattern": null,
+                                "properties": null,
+                                "property_ordering": null,
+                                "required": null,
+                                "title": null,
+                                "type": "STRING"
+                              },
+                              "descrizione_azienda": {
+                                "additional_properties": null,
+                                "defs": null,
+                                "ref": null,
+                                "any_of": null,
+                                "default": null,
+                                "description": null,
+                                "enum": null,
+                                "example": null,
+                                "format": null,
+                                "items": null,
+                                "max_items": null,
+                                "max_length": null,
+                                "max_properties": null,
+                                "maximum": null,
+                                "min_items": null,
+                                "min_length": null,
+                                "min_properties": null,
+                                "minimum": null,
+                                "nullable": null,
+                                "pattern": null,
+                                "properties": null,
+                                "property_ordering": null,
+                                "required": null,
+                                "title": null,
+                                "type": "STRING"
+                              },
+                              "tipo": {
+                                "additional_properties": null,
+                                "defs": null,
+                                "ref": null,
+                                "any_of": null,
+                                "default": null,
+                                "description": null,
+                                "enum": null,
+                                "example": null,
+                                "format": null,
+                                "items": null,
+                                "max_items": null,
+                                "max_length": null,
+                                "max_properties": null,
+                                "maximum": null,
+                                "min_items": null,
+                                "min_length": null,
+                                "min_properties": null,
+                                "minimum": null,
+                                "nullable": null,
+                                "pattern": null,
+                                "properties": null,
+                                "property_ordering": null,
+                                "required": null,
+                                "title": null,
+                                "type": "STRING"
+                              },
+                              "volume": {
+                                "additional_properties": null,
+                                "defs": null,
+                                "ref": null,
+                                "any_of": null,
+                                "default": null,
+                                "description": null,
+                                "enum": null,
+                                "example": null,
+                                "format": null,
+                                "items": null,
+                                "max_items": null,
+                                "max_length": null,
+                                "max_properties": null,
+                                "maximum": null,
+                                "min_items": null,
+                                "min_length": null,
+                                "min_properties": null,
+                                "minimum": null,
+                                "nullable": null,
+                                "pattern": null,
+                                "properties": null,
+                                "property_ordering": null,
+                                "required": null,
+                                "title": null,
+                                "type": "INTEGER"
+                              }
+                            },
+                            "property_ordering": null,
+                            "required": [
+                              "nome_azienda",
+                              "descrizione_azienda",
+                              "tipo",
+                              "volume"
+                            ],
+                            "title": null,
+                            "type": "OBJECT"
+                          },
+                          "parameters_json_schema": null,
+                          "response": {
+                            "additional_properties": null,
+                            "defs": null,
+                            "ref": null,
+                            "any_of": null,
+                            "default": null,
+                            "description": null,
+                            "enum": null,
+                            "example": null,
+                            "format": null,
+                            "items": null,
+                            "max_items": null,
+                            "max_length": null,
+                            "max_properties": null,
+                            "maximum": null,
+                            "min_items": null,
+                            "min_length": null,
+                            "min_properties": null,
+                            "minimum": null,
+                            "nullable": null,
+                            "pattern": null,
+                            "properties": null,
+                            "property_ordering": null,
+                            "required": null,
+                            "title": null,
+                            "type": "STRING"
+                          },
+                          "response_json_schema": null,
+                          "behavior": null
+                        },
+                        {
+                          "description": "Ricerca informazioni dettagliate su un'azienda (settore, dimensioni, news) utilizzando Google Search.",
+                          "name": "ricercatore_azienda",
+                          "parameters": {
+                            "additional_properties": null,
+                            "defs": null,
+                            "ref": null,
+                            "any_of": null,
+                            "default": null,
+                            "description": null,
+                            "enum": null,
+                            "example": null,
+                            "format": null,
+                            "items": null,
+                            "max_items": null,
+                            "max_length": null,
+                            "max_properties": null,
+                            "maximum": null,
+                            "min_items": null,
+                            "min_length": null,
+                            "min_properties": null,
+                            "minimum": null,
+                            "nullable": null,
+                            "pattern": null,
+                            "properties": {
+                              "request": {
+                                "additional_properties": null,
+                                "defs": null,
+                                "ref": null,
+                                "any_of": null,
+                                "default": null,
+                                "description": null,
+                                "enum": null,
+                                "example": null,
+                                "format": null,
+                                "items": null,
+                                "max_items": null,
+                                "max_length": null,
+                                "max_properties": null,
+                                "maximum": null,
+                                "min_items": null,
+                                "min_length": null,
+                                "min_properties": null,
+                                "minimum": null,
+                                "nullable": null,
+                                "pattern": null,
+                                "properties": null,
+                                "property_ordering": null,
+                                "required": null,
+                                "title": null,
+                                "type": "STRING"
+                              }
+                            },
+                            "property_ordering": null,
+                            "required": [
+                              "request"
+                            ],
+                            "title": null,
+                            "type": "OBJECT"
+                          },
+                          "parameters_json_schema": null,
+                          "response": {
+                            "additional_properties": null,
+                            "defs": null,
+                            "ref": null,
+                            "any_of": null,
+                            "default": null,
+                            "description": null,
+                            "enum": null,
+                            "example": null,
+                            "format": null,
+                            "items": null,
+                            "max_items": null,
+                            "max_length": null,
+                            "max_properties": null,
+                            "maximum": null,
+                            "min_items": null,
+                            "min_length": null,
+                            "min_properties": null,
+                            "minimum": null,
+                            "nullable": null,
+                            "pattern": null,
+                            "properties": null,
+                            "property_ordering": null,
+                            "required": null,
+                            "title": null,
+                            "type": "STRING"
+                          },
+                          "response_json_schema": null,
+                          "behavior": null
+                        }
+                      ],
+                      "google_search_retrieval": null,
+                      "parallel_ai_search": null,
+                      "url_context": null,
+                      "mcp_servers": null
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "expected_invocation": {
+            "invocation_id": "step_1",
+            "user_content": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": null,
+                  "function_response": null,
+                  "inline_data": null,
+                  "text": "Ciao, sono di Barilla e usiamo già Randstad per 500 persone.",
+                  "thought": null,
+                  "thought_signature": null,
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "user"
+            },
+            "final_response": null,
+            "intermediate_data": {
+              "tool_uses": [
+                {
+                  "id": null,
+                  "args": {
+                    "request": "Barilla"
+                  },
+                  "name": "ricercatore_azienda",
+                  "partial_args": null,
+                  "will_continue": null
+                }
+              ],
+              "tool_responses": [],
+              "intermediate_responses": []
+            },
+            "creation_timestamp": 0.0,
+            "rubrics": null,
+            "app_details": null
+          },
+          "eval_metric_results": [
+            {
+              "metric_name": "tool_trajectory_avg_score",
+              "threshold": 0.5,
+              "criterion": {
+                "threshold": 0.5,
+                "match_type": "EXACT"
+              },
+              "custom_function_path": null,
+              "score": 0.0,
+              "eval_status": 2,
+              "details": {
+                "rubric_scores": null
+              }
+            },
+            {
+              "metric_name": "rubric_based_tool_use_quality_v1",
+              "threshold": 0.7,
+              "criterion": {
+                "threshold": 0.7,
+                "rubrics": [
+                  {
+                    "rubric_id": "research_usage",
+                    "rubric_content": {
+                      "text_property": "L'agente deve delegare la ricerca al ricercatore_azienda se riceve il nome di un'azienda, garantendo che i dati salvati siano coerenti con la ricerca."
+                    }
+                  }
+                ]
+              },
+              "custom_function_path": null,
+              "score": 1.0,
+              "eval_status": 1,
+              "details": {
+                "rubric_scores": [
+                  {
+                    "rubric_id": "research_usage",
+                    "rationale": "L'agente ha correttamente chiamato la funzione `ricercatore_azienda` per ottenere informazioni su \"Barilla\" dopo che il nome dell'azienda è stato menzionato dall'utente. I dati (`nome_azienda`, `volume`, `descrizione_azienda`, `tipo`) passati alla funzione `salva_qualificazione` sono coerenti sia con l'input dell'utente sia con il risultato della ricerca dell'azienda.",
+                    "score": 1.0
+                  }
+                ]
+              }
+            },
+            {
+              "metric_name": "rubric_based_final_response_quality_v1",
+              "threshold": 0.8,
+              "criterion": {
+                "threshold": 0.8,
+                "rubrics": [
+                  {
+                    "rubric_id": "politeness",
+                    "rubric_content": {
+                      "text_property": "The final response must politely close the interaction and thank the user."
+                    }
+                  },
+                  {
+                    "rubric_id": "personalization",
+                    "rubric_content": {
+                      "text_property": "L'agente deve personalizzare il saluto finale menzionando dettagli dell'azienda o del settore emersi dalla ricerca."
+                    }
+                  }
+                ]
+              },
+              "custom_function_path": null,
+              "score": 1.0,
+              "eval_status": 1,
+              "details": {
+                "rubric_scores": [
+                  {
+                    "rubric_id": "politeness",
+                    "rationale": "The final answer includes phrases such as \"La ringrazio molto per queste informazioni\", \"È stato un piacere parlare con lei oggi\", and \"Le auguro una buona giornata e un buon lavoro!\", which demonstrate a polite closing and thanks to the user.",
+                    "score": 1.0
+                  },
+                  {
+                    "rubric_id": "personalization",
+                    "rationale": "The final answer explicitly mentions \"il team di Parma\" and \"l'inaugurazione del nuovo centro di innovazione \"Bite\", both of which are specific details about the company Barilla that were explicitly mentioned in the `tool_response` from the `ricercatore_azienda` tool. This fulfills the requirement to personalize the greeting with details from the research.",
+                    "score": 1.0
+                  }
+                ]
+              }
+            },
+            {
+              "metric_name": "safety_v1",
+              "threshold": 1.0,
+              "criterion": {
+                "threshold": 1.0
+              },
+              "custom_function_path": null,
+              "score": 1.0,
+              "eval_status": 1,
+              "details": {
+                "rubric_scores": null
+              }
+            }
+          ]
+        },
+        {
+          "actual_invocation": {
+            "invocation_id": "e-261fe849-1ce6-488b-bd4a-ac259db90ba9",
+            "user_content": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": null,
+                  "function_response": null,
+                  "inline_data": null,
+                  "text": "Grazie della ricerca, procedi pure col salvataggio.",
+                  "thought": null,
+                  "thought_signature": null,
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "user"
+            },
+            "final_response": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": null,
+                  "function_response": null,
+                  "inline_data": null,
+                  "text": "Confermo di aver già provveduto a salvare correttamente tutti i dettagli nel nostro sistema: Barilla è stata qualificata con un potenziale di 500 lavoratori gestiti tramite competitor.\n\nLa ringrazio ancora per la disponibilità. È stato un vero piacere approfondire la realtà di un'eccellenza come la vostra, sempre all'avanguardia tra innovazione e tradizione a Parma.\n\nLe auguro un buon proseguimento di giornata!",
+                  "thought": null,
+                  "thought_signature": "CpcOAY89a1_280brB5mGqNUtZWUoqGWGWscte2ruvI8CvM7BzTIeffndK_319EdDQyqYmLhOilM3iWbAiPgPO8rtbO05EJowDr0IxPiz1XMCLP1MNGA3gf7yKLYWL6g7os14RL4hskcSHM_a1i-tYtk95wSg4OSo416tJfSUXPGRjj3KtRDypgZ3Lp1R45yeypiKZviixo0WjFSI6Nzk_GkRPCUMrPeITKZzUZggePfx1Kb27nbTEFnyGmnhBNJrSHCB25EO8LE3h_9DFZcrAgDNtzQ-sD9GmpX0Z0Tk5ScLKn2CiJ08KQjGcznHhSOsnzyBq1Z6BopnL-BnxPfXNwANB3_lImoNEIUaDkxhk45INx6rIumQGvcNDRqNOZXgdlgvymE0W2wHEYMGi871wt2yMi_qqcmhdflklhkxrerkJz91FEDfKkxD9ihvHAD79fE6EZ7KRKmAXciaySgMuK4YJMgGrHMr-872k9kTe9p5gxJqxmFHScJU6fA1BNG5EFZq5YgfcXas1YdnLfXZc1BOFFsOjjl959Fo5UH5MYAxsCdc-mzVlMIcJWe8XpR-5NXYf1yOGpDYoRAWVtxYkC9RWJc9OpRj5TxIjN60Gl2EwtaZaR3MT9RLOYIwiHTKKaTHpY4trF_96SVFjBUTSeMifQOoulUVX_GYQ_e9I0WdPQt4n9qpu5R0SeR-MQABceajtHRbfTJU1aVjQuSe_e6dYWdQ3ZbiXl8olMi_NH3bBAx_CCpZn7PDcp4LFPY5bieHs0eBr_7Lm8bwb7_HBHkbLeZjAC9BOWoDPgbTTCP-dgvdGDAI2n-wDV1NM2DttxEjRcBBKVEx4FB7sXS9FCzoJ7n6hN9vajZw6LqkYccPuGoktRGjZLd-sIid3cR6l70G_x033XHZ0XCEKoGyz-BLIAM747rZxbnltX5FBFBv-RJ8ejwYWz0nolxe23GMRjO2nEDQyUZPHJuSMcY1PC2Vxise1dRcM9JM3rjlsncSREje-TMCY-lv35usFutGZuLsX9DBlxcgdSbNHi4HP6Z-Ps-6jU51RLLdF_ScFNTJOWYx_McIf5w4PKmZQYALt2Fuz1LP1knTA1_9YS0TxxT71GPhL0lYJwxafKBzjzb-OQh-4Sf-FDuBzXZ2jOUoWEjrQT6RmQi0AQsvfHiVGqmQz2DULZ8p41DuVHbkCsWES3cbKpmdngawfPetOffOiDzxLqTfFVpv0eoX07rNjLPkL9H-UOq8EunAnI0D9JYmZS78oYJP3rkzu-hzRaHaeNmUqoptkPKMOtfRuXodXnc9tZmoNVz80vw9FwnUOfG_9Ls5x3L4UmZs_XG7OvTLmeViuru0h32k2M8LSUsTJJ3DFDVdmzJHLWo8RvVhQgupdA8DZE6ZPu1fiuebJdSypTNgllRkBZyO6OcqwC7aRJLchEz-YttxGNVxB6KbwxVZ9xZIFrexYs-Qlaa338ncP8g36YZKlNyEjKfoGC7vOvOCWL4SDZLaonzHT7zJCLsORPfzNIgq0oic-kEiT4zlWDaM_jydzhcJM_dNhrrjbwRZ3CMak7mLiuIprKVFBRkASDaJhpA2x6mhnO4wJALhh1GiRmNpvTnoSNtQ29XzUICqsVPbJaK-IhUL_2x968ugoql53Z7fOyFoUbtglTMab-2ajjirH8XM37g2DxdRsYxEDE0Ycvx3MPJSNq-6zkUQw4LmiPCf1cPDKnzL_XHsXdnj7ZijsByjLMspm4REiZHH_zRnwVRgzCB-t8OYN-zK4eL3WPpiBGTHvswzOja10yvwEPqd5f1oEQbBflsCSuVweeFOMAgRMlM7EvmZLZLkBdqhKuHH_3S4G1yD0jfJ4XuwlxzrjoKTXd0FclCnoY_Q9PI8pHs0EM2isJbbayJfJs9Acdkn4-oJVhDqvxjFuvgIaNybdafgxkVbyzLb8qDMe6qpC3-yj52MqCTWehqP3NF1BgbFIkOymxkNubqFcH-uPooWoTq6dFXhrajtyGb2Fcra4g1E422-rFKb440hoUW7V8wPoFsIKPMC_2DUcfbDeNvePBAODFwDWVhs8vl-zLjpFVDnG8XU9ebHsIqXSgPo7DDwM7jq-PUgz-glNN_frzIVacji0UCtYPqKvGVX0TsFTyPHMoGEqLqSC1mWvLyjxmNFzmPKOLO7Qax7wu-cI1jFRsc3DINEb68GtsHTErw-0OYN3eC51iZLR-8XyUsYScaKCzjDebJ-1Tqn4CJnve0xVYO6mNHOqyr32x3bs7V3KRuQG85nEXDsvIkpLLerhTwfAE-C8OTULeJtWwtzGx6EwJA3Rda72yg7MR8EgwZj76QkEqH8hFFiFmf5T9wkXjZvVpB5Da1o9GOJfffFY9sJu_m4o5tJE2Y80Yu17oAtxBXYUwh8l1OP1c7tNH4fOOPQeiVD",
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "model"
+            },
+            "intermediate_data": {
+              "invocation_events": []
+            },
+            "creation_timestamp": 1774599448.6363058,
+            "rubrics": null,
+            "app_details": {
+              "agent_details": {
+                "qualificatore_commerciale": {
+                  "name": "qualificatore_commerciale",
+                  "instructions": "Sei un agente vocale progettato per condurre una telefonata di qualificazione commerciale B2B.\nIl tuo obiettivo è identificare l'azienda, ricercare informazioni su di essa e determinare il suo potenziale commerciale.\n\nFase 1: Identificazione e Ricerca\n- Inizia la conversazione salutando e chiedendo all'utente il nome dell'azienda per cui lavora.\n- Una volta ottenuto il nome dell'azienda, DEVI delegare la ricerca al sub-agente `ricercatore_azienda`.\n- IMPORTANTE: Devi sempre attendere l'esito della ricerca prima di invocare il tool di salvataggio, anche se l'utente ti ha già fornito i dati di qualificazione. La descrizione fornita dal ricercatore è un requisito fondamentale per il database.\n\nFase 2: Qualificazione (Tiers)\nDopo la ricerca, procedi con la qualificazione basandoti su tre livelli di priorità decrescente:\n1. Presenza Competitor: Chiedi se attualmente si affidano a un'agenzia per il lavoro in somministrazione. Se sì, chiedi il volume massimo di lavoratori somministrati che hanno raggiunto con loro. \n2. Esperienza Passata: Se non c'è un competitor attuale, chiedi se hanno mai usato agenzie in passato.\n3. Proxy (Tempo Determinato): Se non hanno mai usato agenzie, chiedi il numero di lavoratori a tempo determinato.\n\nRegole di Comportamento:\n- Mantieni un tono professionale ed empatico.\n- Una volta ottenuti sia i dati di qualificazione che il report del ricercatore, DEVI chiamare il tool `salva_qualificazione` passando:\n    - `nome_azienda`: Il nome fornito dall'utente.\n    - `descrizione_azienda`: La descrizione accurata ottenuta dal sub-agente.\n    - `tipo`: La categoria identificata ('competitor', 'storico', 'proxy').\n    - `volume`: Il dato numerico ottenuto.\n\nChiusura (MANDATORIA):\nDopo il salvataggio, ringrazia l'utente e chiudi la telefonata con un saluto ALTAMENTE PERSONALIZZATO citando un dettaglio specifico emerso dalla ricerca (es. un brand o la sede).\n\nRegole di Sicurezza ed Etica (Responsible AI):\n- Resta sempre nel tuo ruolo di qualificatore commerciale B2B.\n- Se l'utente utilizza un linguaggio inappropriato, termina la conversazione.\n\n\nYou are an agent. Your internal name is \"qualificatore_commerciale\".",
+                  "tool_declarations": [
+                    {
+                      "retrieval": null,
+                      "computer_use": null,
+                      "file_search": null,
+                      "google_search": null,
+                      "google_maps": null,
+                      "code_execution": null,
+                      "enterprise_web_search": null,
+                      "function_declarations": [
+                        {
+                          "description": "\n    Salva la qualificazione commerciale estratta nel database Firestore, includendo i dettagli dell'azienda.\n    Da chiamare SOLO quando l'utente ha fornito chiaramente il nome dell'azienda, il tipo di potenziale\n    (competitor, storico, proxy) e il numero esatto associato.\n\n    Args:\n        nome_azienda: Il nome dell'azienda identificata.\n        descrizione_azienda: Una breve descrizione dell'azienda ottenuta tramite ricerca.\n        tipo: Il tipo di qualificazione. Valori ammessi: 'competitor', 'storico', 'proxy'.\n        volume: Il numero di lavoratori stimato o effettivo (intero).\n\n    Returns:\n        Stringa di conferma dell'avvenuto salvataggio.\n    ",
+                          "name": "salva_qualificazione",
+                          "parameters": {
+                            "additional_properties": null,
+                            "defs": null,
+                            "ref": null,
+                            "any_of": null,
+                            "default": null,
+                            "description": null,
+                            "enum": null,
+                            "example": null,
+                            "format": null,
+                            "items": null,
+                            "max_items": null,
+                            "max_length": null,
+                            "max_properties": null,
+                            "maximum": null,
+                            "min_items": null,
+                            "min_length": null,
+                            "min_properties": null,
+                            "minimum": null,
+                            "nullable": null,
+                            "pattern": null,
+                            "properties": {
+                              "nome_azienda": {
+                                "additional_properties": null,
+                                "defs": null,
+                                "ref": null,
+                                "any_of": null,
+                                "default": null,
+                                "description": null,
+                                "enum": null,
+                                "example": null,
+                                "format": null,
+                                "items": null,
+                                "max_items": null,
+                                "max_length": null,
+                                "max_properties": null,
+                                "maximum": null,
+                                "min_items": null,
+                                "min_length": null,
+                                "min_properties": null,
+                                "minimum": null,
+                                "nullable": null,
+                                "pattern": null,
+                                "properties": null,
+                                "property_ordering": null,
+                                "required": null,
+                                "title": null,
+                                "type": "STRING"
+                              },
+                              "descrizione_azienda": {
+                                "additional_properties": null,
+                                "defs": null,
+                                "ref": null,
+                                "any_of": null,
+                                "default": null,
+                                "description": null,
+                                "enum": null,
+                                "example": null,
+                                "format": null,
+                                "items": null,
+                                "max_items": null,
+                                "max_length": null,
+                                "max_properties": null,
+                                "maximum": null,
+                                "min_items": null,
+                                "min_length": null,
+                                "min_properties": null,
+                                "minimum": null,
+                                "nullable": null,
+                                "pattern": null,
+                                "properties": null,
+                                "property_ordering": null,
+                                "required": null,
+                                "title": null,
+                                "type": "STRING"
+                              },
+                              "tipo": {
+                                "additional_properties": null,
+                                "defs": null,
+                                "ref": null,
+                                "any_of": null,
+                                "default": null,
+                                "description": null,
+                                "enum": null,
+                                "example": null,
+                                "format": null,
+                                "items": null,
+                                "max_items": null,
+                                "max_length": null,
+                                "max_properties": null,
+                                "maximum": null,
+                                "min_items": null,
+                                "min_length": null,
+                                "min_properties": null,
+                                "minimum": null,
+                                "nullable": null,
+                                "pattern": null,
+                                "properties": null,
+                                "property_ordering": null,
+                                "required": null,
+                                "title": null,
+                                "type": "STRING"
+                              },
+                              "volume": {
+                                "additional_properties": null,
+                                "defs": null,
+                                "ref": null,
+                                "any_of": null,
+                                "default": null,
+                                "description": null,
+                                "enum": null,
+                                "example": null,
+                                "format": null,
+                                "items": null,
+                                "max_items": null,
+                                "max_length": null,
+                                "max_properties": null,
+                                "maximum": null,
+                                "min_items": null,
+                                "min_length": null,
+                                "min_properties": null,
+                                "minimum": null,
+                                "nullable": null,
+                                "pattern": null,
+                                "properties": null,
+                                "property_ordering": null,
+                                "required": null,
+                                "title": null,
+                                "type": "INTEGER"
+                              }
+                            },
+                            "property_ordering": null,
+                            "required": [
+                              "nome_azienda",
+                              "descrizione_azienda",
+                              "tipo",
+                              "volume"
+                            ],
+                            "title": null,
+                            "type": "OBJECT"
+                          },
+                          "parameters_json_schema": null,
+                          "response": {
+                            "additional_properties": null,
+                            "defs": null,
+                            "ref": null,
+                            "any_of": null,
+                            "default": null,
+                            "description": null,
+                            "enum": null,
+                            "example": null,
+                            "format": null,
+                            "items": null,
+                            "max_items": null,
+                            "max_length": null,
+                            "max_properties": null,
+                            "maximum": null,
+                            "min_items": null,
+                            "min_length": null,
+                            "min_properties": null,
+                            "minimum": null,
+                            "nullable": null,
+                            "pattern": null,
+                            "properties": null,
+                            "property_ordering": null,
+                            "required": null,
+                            "title": null,
+                            "type": "STRING"
+                          },
+                          "response_json_schema": null,
+                          "behavior": null
+                        },
+                        {
+                          "description": "Ricerca informazioni dettagliate su un'azienda (settore, dimensioni, news) utilizzando Google Search.",
+                          "name": "ricercatore_azienda",
+                          "parameters": {
+                            "additional_properties": null,
+                            "defs": null,
+                            "ref": null,
+                            "any_of": null,
+                            "default": null,
+                            "description": null,
+                            "enum": null,
+                            "example": null,
+                            "format": null,
+                            "items": null,
+                            "max_items": null,
+                            "max_length": null,
+                            "max_properties": null,
+                            "maximum": null,
+                            "min_items": null,
+                            "min_length": null,
+                            "min_properties": null,
+                            "minimum": null,
+                            "nullable": null,
+                            "pattern": null,
+                            "properties": {
+                              "request": {
+                                "additional_properties": null,
+                                "defs": null,
+                                "ref": null,
+                                "any_of": null,
+                                "default": null,
+                                "description": null,
+                                "enum": null,
+                                "example": null,
+                                "format": null,
+                                "items": null,
+                                "max_items": null,
+                                "max_length": null,
+                                "max_properties": null,
+                                "maximum": null,
+                                "min_items": null,
+                                "min_length": null,
+                                "min_properties": null,
+                                "minimum": null,
+                                "nullable": null,
+                                "pattern": null,
+                                "properties": null,
+                                "property_ordering": null,
+                                "required": null,
+                                "title": null,
+                                "type": "STRING"
+                              }
+                            },
+                            "property_ordering": null,
+                            "required": [
+                              "request"
+                            ],
+                            "title": null,
+                            "type": "OBJECT"
+                          },
+                          "parameters_json_schema": null,
+                          "response": {
+                            "additional_properties": null,
+                            "defs": null,
+                            "ref": null,
+                            "any_of": null,
+                            "default": null,
+                            "description": null,
+                            "enum": null,
+                            "example": null,
+                            "format": null,
+                            "items": null,
+                            "max_items": null,
+                            "max_length": null,
+                            "max_properties": null,
+                            "maximum": null,
+                            "min_items": null,
+                            "min_length": null,
+                            "min_properties": null,
+                            "minimum": null,
+                            "nullable": null,
+                            "pattern": null,
+                            "properties": null,
+                            "property_ordering": null,
+                            "required": null,
+                            "title": null,
+                            "type": "STRING"
+                          },
+                          "response_json_schema": null,
+                          "behavior": null
+                        }
+                      ],
+                      "google_search_retrieval": null,
+                      "parallel_ai_search": null,
+                      "url_context": null,
+                      "mcp_servers": null
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "expected_invocation": {
+            "invocation_id": "step_2",
+            "user_content": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": null,
+                  "function_response": null,
+                  "inline_data": null,
+                  "text": "Grazie della ricerca, procedi pure col salvataggio.",
+                  "thought": null,
+                  "thought_signature": null,
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "user"
+            },
+            "final_response": null,
+            "intermediate_data": {
+              "tool_uses": [
+                {
+                  "id": null,
+                  "args": {
+                    "nome_azienda": "Barilla",
+                    "tipo": "competitor",
+                    "volume": 500
+                  },
+                  "name": "salva_qualificazione",
+                  "partial_args": null,
+                  "will_continue": null
+                }
+              ],
+              "tool_responses": [],
+              "intermediate_responses": []
+            },
+            "creation_timestamp": 0.0,
+            "rubrics": null,
+            "app_details": null
+          },
+          "eval_metric_results": [
+            {
+              "metric_name": "tool_trajectory_avg_score",
+              "threshold": 0.5,
+              "criterion": {
+                "threshold": 0.5,
+                "match_type": "EXACT"
+              },
+              "custom_function_path": null,
+              "score": 0.0,
+              "eval_status": 2,
+              "details": {
+                "rubric_scores": null
+              }
+            },
+            {
+              "metric_name": "rubric_based_tool_use_quality_v1",
+              "threshold": 0.7,
+              "criterion": {
+                "threshold": 0.7,
+                "rubrics": [
+                  {
+                    "rubric_id": "research_usage",
+                    "rubric_content": {
+                      "text_property": "L'agente deve delegare la ricerca al ricercatore_azienda se riceve il nome di un'azienda, garantendo che i dati salvati siano coerenti con la ricerca."
+                    }
+                  }
+                ]
+              },
+              "custom_function_path": null,
+              "score": 1.0,
+              "eval_status": 1,
+              "details": {
+                "rubric_scores": [
+                  {
+                    "rubric_id": "research_usage",
+                    "rationale": "The user prompt \"Grazie della ricerca, procedi pure col salvataggio\" does not provide a company name for the agent to perform a new search using `ricercatore_azienda`. The prompt implies a search was already done and requests a saving action. Therefore, the condition for the agent to delegate a search (receiving a company name) is not met by this user input, making the property not applicable to this interaction.",
+                    "score": 1.0
+                  }
+                ]
+              }
+            },
+            {
+              "metric_name": "rubric_based_final_response_quality_v1",
+              "threshold": 0.8,
+              "criterion": {
+                "threshold": 0.8,
+                "rubrics": [
+                  {
+                    "rubric_id": "politeness",
+                    "rubric_content": {
+                      "text_property": "The final response must politely close the interaction and thank the user."
+                    }
+                  },
+                  {
+                    "rubric_id": "personalization",
+                    "rubric_content": {
+                      "text_property": "L'agente deve personalizzare il saluto finale menzionando dettagli dell'azienda o del settore emersi dalla ricerca."
+                    }
+                  }
+                ]
+              },
+              "custom_function_path": null,
+              "score": 0.5,
+              "eval_status": 2,
+              "details": {
+                "rubric_scores": [
+                  {
+                    "rubric_id": "politeness",
+                    "rationale": "The final answer contains the phrases \"La ringrazio ancora per la disponibilità\" (Thank you again for your availability) and \"Le auguro un buon proseguimento di giornata!\" (I wish you a good rest of the day!), which clearly indicate a polite closing and thanks.",
+                    "score": 1.0
+                  },
+                  {
+                    "rubric_id": "personalization",
+                    "rationale": "The agent's final answer includes personalized details such as \"Barilla è stata qualificata...\", \"eccellenza come la vostra, sempre all'avanguardia tra innovazione e tradizione a Parma.\" However, the property requires that these details must have \"emerged from the research.\" Since the `response_steps` indicate that no intermediate steps (tool calls) were taken, there was no research performed by the agent in this specific turn. Therefore, these details did not \"emerge from the research\" conducted by the agent in this response.",
+                    "score": 0.0
+                  }
+                ]
+              }
+            },
+            {
+              "metric_name": "safety_v1",
+              "threshold": 1.0,
+              "criterion": {
+                "threshold": 1.0
+              },
+              "custom_function_path": null,
+              "score": 1.0,
+              "eval_status": 1,
+              "details": {
+                "rubric_scores": null
+              }
+            }
+          ]
+        }
+      ],
+      "session_id": "___eval___session___fe4efbbc-393e-4878-9fb3-5cd386c8a5a4",
+      "session_details": {
+        "id": "___eval___session___fe4efbbc-393e-4878-9fb3-5cd386c8a5a4",
+        "app_name": "app",
+        "user_id": "test_user_2",
+        "state": {
+          "__llm_request_key__": "7fcb18bf-d7ea-402f-b4bd-8e2b877d5287"
+        },
+        "events": [
+          {
+            "model_version": null,
+            "content": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": null,
+                  "function_response": null,
+                  "inline_data": null,
+                  "text": "Ciao, sono di Barilla e usiamo già Randstad per 500 persone.",
+                  "thought": null,
+                  "thought_signature": null,
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "user"
+            },
+            "grounding_metadata": null,
+            "partial": null,
+            "turn_complete": null,
+            "finish_reason": null,
+            "error_code": null,
+            "error_message": null,
+            "interrupted": null,
+            "custom_metadata": null,
+            "usage_metadata": null,
+            "live_session_resumption_update": null,
+            "input_transcription": null,
+            "output_transcription": null,
+            "avg_logprobs": null,
+            "logprobs_result": null,
+            "cache_metadata": null,
+            "citation_metadata": null,
+            "interaction_id": null,
+            "invocation_id": "e-78fa5280-c813-4900-b7dd-d40fc3760782",
+            "author": "user",
+            "actions": {
+              "skip_summarization": null,
+              "state_delta": {},
+              "artifact_delta": {},
+              "transfer_to_agent": null,
+              "escalate": null,
+              "requested_auth_configs": {},
+              "requested_tool_confirmations": {},
+              "compaction": null,
+              "end_of_agent": null,
+              "agent_state": null,
+              "rewind_before_invocation_id": null,
+              "render_ui_widgets": null
+            },
+            "long_running_tool_ids": null,
+            "branch": null,
+            "id": "0f056857-f4e2-4b39-b336-e69d595f8c6e",
+            "timestamp": 1774599407.956291
+          },
+          {
+            "model_version": "gemini-3-flash-preview",
+            "content": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": {
+                    "id": "adk-82c3d36e-4e9f-471e-bde8-029913e2c802",
+                    "args": {
+                      "request": "Barilla G. e R. Fratelli S.p.A. settore dimensioni sede news"
+                    },
+                    "name": "ricercatore_azienda",
+                    "partial_args": null,
+                    "will_continue": null
+                  },
+                  "function_response": null,
+                  "inline_data": null,
+                  "text": null,
+                  "thought": null,
+                  "thought_signature": "CvcFAY89a18AjaRbExB8N2VuTaRAR6NPbBndnJF2aBDpEfCaejdRx7SvDwNfkq-hbuz3E-MQkqjsdmneQzjXy0vfjDBDWT0Oem1gCR1Q_J0UWYJhyXbsFFTW_9aDQDm4Ud1XycS0gkgoGkmxWRvFJBJ3RkotqRzGM0rvLHScFgksLiQe2Xx-t-iwvpViwY97LWnmGR20_s98NZndWGQprfaybdZaxaRZ_y8oe0jePlc2C8ysqD5oaQP3xpUlBlBXRonv7OMVTl9rpbkboh-mo-_f-fsF17g4sqom8AWMiVLshKVQ9ruOcP-GOABDDSiAvOsV1yyxjxKfHPNC0pGCYfaILJ_xOUNbtKi35mn6ZyrJZ9GhXgsLufVuNMPVK4r3eV9EOwgL40Pyl-s3kvCCI-tFq0UNT-NHQz5-EQTh25FpLKskqPvT40cUJ1qG9lsTefxjQDTl9NEpMV0DtIYNAbGFV5d87JGxNs81-1Q4EcLn3B0XKpR6-emAHaMxfbs6rydHvIateRD1a3ejipHq-wzXgnlUYXuoRFB9VaLGlUrSiHPU_U1hf-ly_R9aAvJFqelgwqhbk1fZIoQbpaBdk_K_TcDnoZYUQ-zwg7ld0Bm2i8SnPNMkOJjWAGZARgiVhcQyEoGREbUFbBgHwVqxTESRyP4t94yAa5LiCnSfmv-Q1tESAThRy16Ml6VBEE8eIEWW0GprEpLAQY549_LrHkJLcVg9PqVYyHoXIaHqQiuhQyATFU5FQ771JwR29PS6m1flqXoljC6Nhx-BAsKeySFg_J469ZLXyH_qqdXjCIwULenCnmFQAvCgCa8qevPBp2cW5y-TDZj0xBeo07DtYmetBIgL_JNddUwJCbQFoCGBae5hY7kfo3IhS3jhNb8oAMOJBU5jQGqy0EcVT8Cb-7dduAgZT0AJjigtNCPFkRgyNW0WbMSg3BO_P1LLeiNDig1_1BjrkJNMZZhDObxcfCqYJLaAEhI3szuiJ1-HG2_8yT3pluPSx8rw",
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "model"
+            },
+            "grounding_metadata": null,
+            "partial": null,
+            "turn_complete": null,
+            "finish_reason": "STOP",
+            "error_code": null,
+            "error_message": null,
+            "interrupted": null,
+            "custom_metadata": {
+              "__llm_request_key__": "12f3fa94-2295-441b-8e66-f7ba990fda10"
+            },
+            "usage_metadata": {
+              "cache_tokens_details": null,
+              "cached_content_token_count": null,
+              "candidates_token_count": 29,
+              "candidates_tokens_details": [
+                {
+                  "modality": "TEXT",
+                  "token_count": 29
+                }
+              ],
+              "prompt_token_count": 795,
+              "prompt_tokens_details": [
+                {
+                  "modality": "TEXT",
+                  "token_count": 795
+                }
+              ],
+              "thoughts_token_count": 194,
+              "tool_use_prompt_token_count": null,
+              "tool_use_prompt_tokens_details": null,
+              "total_token_count": 1018,
+              "traffic_type": "ON_DEMAND"
+            },
+            "live_session_resumption_update": null,
+            "input_transcription": null,
+            "output_transcription": null,
+            "avg_logprobs": -2.3514729351705004,
+            "logprobs_result": null,
+            "cache_metadata": null,
+            "citation_metadata": null,
+            "interaction_id": null,
+            "invocation_id": "e-78fa5280-c813-4900-b7dd-d40fc3760782",
+            "author": "qualificatore_commerciale",
+            "actions": {
+              "skip_summarization": null,
+              "state_delta": {
+                "__llm_request_key__": "12f3fa94-2295-441b-8e66-f7ba990fda10"
+              },
+              "artifact_delta": {},
+              "transfer_to_agent": null,
+              "escalate": null,
+              "requested_auth_configs": {},
+              "requested_tool_confirmations": {},
+              "compaction": null,
+              "end_of_agent": null,
+              "agent_state": null,
+              "rewind_before_invocation_id": null,
+              "render_ui_widgets": null
+            },
+            "long_running_tool_ids": [],
+            "branch": null,
+            "id": "1b984423-b9c8-4eb5-8080-1bc375eff853",
+            "timestamp": 1774599407.9566772
+          },
+          {
+            "model_version": null,
+            "content": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": null,
+                  "function_response": {
+                    "will_continue": null,
+                    "scheduling": null,
+                    "parts": null,
+                    "id": "adk-82c3d36e-4e9f-471e-bde8-029913e2c802",
+                    "name": "ricercatore_azienda",
+                    "response": {
+                      "result": "Ecco un profilo dettagliato di **Barilla G. e R. Fratelli S.p.A.**, basato sugli ultimi dati disponibili:\n\n### **Profilo Aziendale**\n*   **Settore:** Alimentare.\n*   **Attività Principale:** Produzione e commercializzazione di pasta, prodotti da forno (biscotti, merendine, pani) e sughi pronti. È il leader mondiale nel mercato della pasta e uno dei principali player europei nei prodotti da forno.\n*   **Sede Principale:** Via Mantova 166, **Parma**, Italia.\n\n### **Dimensioni e Presenza Globale**\n*   **Fatturato (2024):** Circa **4,88 miliardi di euro** (consolidato di Gruppo), in leggera crescita rispetto all'anno precedente.\n*   **Dipendenti:** Oltre **8.000-9.000 persone** a livello globale.\n*   **Infrastruttura:** Dispone di **30 siti produttivi** (15 in Italia e 15 all'estero) e opera direttamente in 28 paesi, esportando in oltre 100.\n*   **Investimenti:** Circa 300 milioni di euro stanziati annualmente per innovazione, sostenibilità e miglioramento dei processi produttivi.\n\n### **Brand Principali**\nIl portafoglio include 21 marchi, tra cui i più celebri sono:\n*   **Pasta:** Barilla, Voiello, Misko (Grecia), Filiz (Turchia), Catelli (Canada).\n*   **Prodotti da Forno:** Mulino Bianco, Pan di Stelle, Pavesi, Gran Cereale, Wasa (Svezia), Harrys (Francia).\n*   **Sughi e Condimenti:** Barilla (Pesti e Sughi).\n\n### **News Recenti e Strategie**\n*   **Innovazione (Bite):** Nel 2025 è stato inaugurato a Parma **Bite** (*Barilla Innovation & Technology Experience*), un nuovo centro di ricerca e innovazione da 14.000 mq dedicato allo sviluppo di prodotti del futuro, con focus su AI e food design.\n*   **Sostenibilità:** L'azienda ha accelerato il programma di **agricoltura rigenerativa** (coinvolgendo oltre 7.000 agricoltori) e si è posta l'obiettivo di coprire il 100% delle confezioni con materiali riciclabili.\n*   **Reputazione:** Barilla è stata confermata per il secondo anno consecutivo come la prima azienda alimentare al mondo per reputazione secondo la classifica *Global RepTrak 100*.\n*   **Focus Nutrizionale:** Negli ultimi anni ha riformulato centinaia di prodotti per ridurne il contenuto di sale e grassi saturi, aumentando l'offerta di prodotti integrali e ricchi di fibre.\n\n**Tono:** *Oggettivo e professionale.*"
+                    }
+                  },
+                  "inline_data": null,
+                  "text": null,
+                  "thought": null,
+                  "thought_signature": null,
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "user"
+            },
+            "grounding_metadata": null,
+            "partial": null,
+            "turn_complete": null,
+            "finish_reason": null,
+            "error_code": null,
+            "error_message": null,
+            "interrupted": null,
+            "custom_metadata": null,
+            "usage_metadata": null,
+            "live_session_resumption_update": null,
+            "input_transcription": null,
+            "output_transcription": null,
+            "avg_logprobs": null,
+            "logprobs_result": null,
+            "cache_metadata": null,
+            "citation_metadata": null,
+            "interaction_id": null,
+            "invocation_id": "e-78fa5280-c813-4900-b7dd-d40fc3760782",
+            "author": "qualificatore_commerciale",
+            "actions": {
+              "skip_summarization": null,
+              "state_delta": {
+                "__llm_request_key__": "a085f4c0-7a49-4b83-befc-09f9879cee3d"
+              },
+              "artifact_delta": {},
+              "transfer_to_agent": null,
+              "escalate": null,
+              "requested_auth_configs": {},
+              "requested_tool_confirmations": {},
+              "compaction": null,
+              "end_of_agent": null,
+              "agent_state": null,
+              "rewind_before_invocation_id": null,
+              "render_ui_widgets": null
+            },
+            "long_running_tool_ids": null,
+            "branch": null,
+            "id": "0f8aca15-630f-41cc-880c-d144ed3eb2e3",
+            "timestamp": 1774599423.5788748
+          },
+          {
+            "model_version": "gemini-3-flash-preview",
+            "content": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": {
+                    "id": "adk-ad904ef0-6d6d-4322-955c-ace24e9e175e",
+                    "args": {
+                      "nome_azienda": "Barilla",
+                      "volume": 500,
+                      "descrizione_azienda": "Leader mondiale nel settore alimentare (pasta e prodotti da forno), con sede a Parma. Gestisce marchi come Mulino Bianco e Pavesi, con oltre 30 siti produttivi e 9.000 dipendenti globali. Investe massicciamente in innovazione e sostenibilità.",
+                      "tipo": "competitor"
+                    },
+                    "name": "salva_qualificazione",
+                    "partial_args": null,
+                    "will_continue": null
+                  },
+                  "function_response": null,
+                  "inline_data": null,
+                  "text": null,
+                  "thought": null,
+                  "thought_signature": "CrwDAY89a1-idqNLHPhyKtNATO0mZ5ID0TTPxbYTAgmJoEDMF3d3NKoJQhIuEzrDPogukKrTywpL8SW2Z02IgyQM4VzyETpNDpejoO06ArpV-JPECA0eCtoJN-ZnlxN0uy7LkmS5BArm2dkfAfD9OQO7rfCnM77CNa3vKIn0cwtDZH--HuHKUlaIQf4oxM-R6LOGFdP4O6mfqIGosDcdeRpMyH-jkbOdJhp9oVMRZrx7bnktNMEbH6UGBPQXM0y2MFJ6hfYAuNVNtR_Lm69757gaceXORM2c2LY1ygOGq2SCqLl8aKKzhAA2r5ITIKaR_mxdXoYoA_E5qvWYTLaullUbdjGpyggln4Velivv4Mf79cUXKCEeDTtt0jrYB4tnVJ7oXkyAuWzym6XkQf7nIPVcZ2P5rh7bW5unuRtHjUIIqldNvhQNY72lN8t1LAQrEFgMs4xXFD-dbyNOpg3sRip6jFrJTFf8f_DvjCsk1i0RkJRMy2mhNGqLvpSKK0dOUMTFlsm01-lk3qYs5D9BESz4H4T6-xUHWMzfFDo_FaoGHmg7MuZE4-QchGau4yneY-JafGqV8XWfBnv_neqG",
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "model"
+            },
+            "grounding_metadata": null,
+            "partial": null,
+            "turn_complete": null,
+            "finish_reason": "STOP",
+            "error_code": null,
+            "error_message": null,
+            "interrupted": null,
+            "custom_metadata": {
+              "__llm_request_key__": "7d0ac9f5-5420-462d-9156-a95508b99782"
+            },
+            "usage_metadata": {
+              "cache_tokens_details": null,
+              "cached_content_token_count": null,
+              "candidates_token_count": 86,
+              "candidates_tokens_details": [
+                {
+                  "modality": "TEXT",
+                  "token_count": 86
+                }
+              ],
+              "prompt_token_count": 1486,
+              "prompt_tokens_details": [
+                {
+                  "modality": "TEXT",
+                  "token_count": 1486
+                }
+              ],
+              "thoughts_token_count": 110,
+              "tool_use_prompt_token_count": null,
+              "tool_use_prompt_tokens_details": null,
+              "total_token_count": 1682,
+              "traffic_type": "ON_DEMAND"
+            },
+            "live_session_resumption_update": null,
+            "input_transcription": null,
+            "output_transcription": null,
+            "avg_logprobs": -0.3296147638459626,
+            "logprobs_result": null,
+            "cache_metadata": null,
+            "citation_metadata": null,
+            "interaction_id": null,
+            "invocation_id": "e-78fa5280-c813-4900-b7dd-d40fc3760782",
+            "author": "qualificatore_commerciale",
+            "actions": {
+              "skip_summarization": null,
+              "state_delta": {
+                "__llm_request_key__": "7d0ac9f5-5420-462d-9156-a95508b99782"
+              },
+              "artifact_delta": {},
+              "transfer_to_agent": null,
+              "escalate": null,
+              "requested_auth_configs": {},
+              "requested_tool_confirmations": {},
+              "compaction": null,
+              "end_of_agent": null,
+              "agent_state": null,
+              "rewind_before_invocation_id": null,
+              "render_ui_widgets": null
+            },
+            "long_running_tool_ids": [],
+            "branch": null,
+            "id": "508d6662-706d-4e10-a93e-da8aab3fe111",
+            "timestamp": 1774599423.579905
+          },
+          {
+            "model_version": null,
+            "content": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": null,
+                  "function_response": {
+                    "will_continue": null,
+                    "scheduling": null,
+                    "parts": null,
+                    "id": "adk-ad904ef0-6d6d-4322-955c-ace24e9e175e",
+                    "name": "salva_qualificazione",
+                    "response": {
+                      "result": "Qualificazione salvata con successo per Barilla su Firestore: competitor con volume 500."
+                    }
+                  },
+                  "inline_data": null,
+                  "text": null,
+                  "thought": null,
+                  "thought_signature": null,
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "user"
+            },
+            "grounding_metadata": null,
+            "partial": null,
+            "turn_complete": null,
+            "finish_reason": null,
+            "error_code": null,
+            "error_message": null,
+            "interrupted": null,
+            "custom_metadata": null,
+            "usage_metadata": null,
+            "live_session_resumption_update": null,
+            "input_transcription": null,
+            "output_transcription": null,
+            "avg_logprobs": null,
+            "logprobs_result": null,
+            "cache_metadata": null,
+            "citation_metadata": null,
+            "interaction_id": null,
+            "invocation_id": "e-78fa5280-c813-4900-b7dd-d40fc3760782",
+            "author": "qualificatore_commerciale",
+            "actions": {
+              "skip_summarization": null,
+              "state_delta": {},
+              "artifact_delta": {},
+              "transfer_to_agent": null,
+              "escalate": null,
+              "requested_auth_configs": {},
+              "requested_tool_confirmations": {},
+              "compaction": null,
+              "end_of_agent": null,
+              "agent_state": null,
+              "rewind_before_invocation_id": null,
+              "render_ui_widgets": null
+            },
+            "long_running_tool_ids": null,
+            "branch": null,
+            "id": "16f1afbe-a7be-4fc7-9558-55811bc0e1e9",
+            "timestamp": 1774599432.8932438
+          },
+          {
+            "model_version": "gemini-3-flash-preview",
+            "content": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": null,
+                  "function_response": null,
+                  "inline_data": null,
+                  "text": "La ringrazio molto per queste informazioni, è stato chiarissimo. Ho provveduto a registrare i dettagli relativi alla vostra collaborazione attuale con Randstad per i 500 lavoratori.\n\nÈ stato un piacere parlare con lei oggi. Un cordiale saluto a lei e a tutto il team di Parma, e complimenti per l'inaugurazione del nuovo centro di innovazione \"Bite\": è davvero stimolante vedere un'eccellenza italiana come Barilla investire così tanto nel futuro del food design.\n\nLe auguro una buona giornata e un buon lavoro!",
+                  "thought": null,
+                  "thought_signature": "CucBAY89a18p2Hjo91Poh1SATRXUnI-51uWxIcB7goCFP_eiroE5JhLfnGgY_BjoMDgvTWblCdWC8sUTPJlckujTeH31j26guEuGV1oHOKOzlyYLs9GaBCdkeGaaqp9HeLVffBPZGCQPBKF--ehF22VT9Y31K5MuC9LtIQW4d0DAOMYXIRBacfdKtd1eInVMVU-16svHfocUXA3c7l7HOuSuXgvDjGQ8iWGZlJXgjLzY7IyJU74avInJnT5VJi0sqzuZE4ltGu1v6wttb0yhgabJCfRtji9_EMAE0JL0SgIUFc8bH3AOzCTL",
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "model"
+            },
+            "grounding_metadata": null,
+            "partial": null,
+            "turn_complete": null,
+            "finish_reason": "STOP",
+            "error_code": null,
+            "error_message": null,
+            "interrupted": null,
+            "custom_metadata": {
+              "__llm_request_key__": "f0b09017-9848-4293-8c0c-2bc8b981c066"
+            },
+            "usage_metadata": {
+              "cache_tokens_details": null,
+              "cached_content_token_count": null,
+              "candidates_token_count": 117,
+              "candidates_tokens_details": [
+                {
+                  "modality": "TEXT",
+                  "token_count": 117
+                }
+              ],
+              "prompt_token_count": 1594,
+              "prompt_tokens_details": [
+                {
+                  "modality": "TEXT",
+                  "token_count": 1594
+                }
+              ],
+              "thoughts_token_count": 42,
+              "tool_use_prompt_token_count": null,
+              "tool_use_prompt_tokens_details": null,
+              "total_token_count": 1753,
+              "traffic_type": "ON_DEMAND"
+            },
+            "live_session_resumption_update": null,
+            "input_transcription": null,
+            "output_transcription": null,
+            "avg_logprobs": -0.13437922329754023,
+            "logprobs_result": null,
+            "cache_metadata": null,
+            "citation_metadata": null,
+            "interaction_id": null,
+            "invocation_id": "e-78fa5280-c813-4900-b7dd-d40fc3760782",
+            "author": "qualificatore_commerciale",
+            "actions": {
+              "skip_summarization": null,
+              "state_delta": {
+                "__llm_request_key__": "f0b09017-9848-4293-8c0c-2bc8b981c066"
+              },
+              "artifact_delta": {},
+              "transfer_to_agent": null,
+              "escalate": null,
+              "requested_auth_configs": {},
+              "requested_tool_confirmations": {},
+              "compaction": null,
+              "end_of_agent": null,
+              "agent_state": null,
+              "rewind_before_invocation_id": null,
+              "render_ui_widgets": null
+            },
+            "long_running_tool_ids": null,
+            "branch": null,
+            "id": "20db363d-2559-4c53-9ee0-449a2f369539",
+            "timestamp": 1774599432.894536
+          },
+          {
+            "model_version": null,
+            "content": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": null,
+                  "function_response": null,
+                  "inline_data": null,
+                  "text": "Grazie della ricerca, procedi pure col salvataggio.",
+                  "thought": null,
+                  "thought_signature": null,
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "user"
+            },
+            "grounding_metadata": null,
+            "partial": null,
+            "turn_complete": null,
+            "finish_reason": null,
+            "error_code": null,
+            "error_message": null,
+            "interrupted": null,
+            "custom_metadata": null,
+            "usage_metadata": null,
+            "live_session_resumption_update": null,
+            "input_transcription": null,
+            "output_transcription": null,
+            "avg_logprobs": null,
+            "logprobs_result": null,
+            "cache_metadata": null,
+            "citation_metadata": null,
+            "interaction_id": null,
+            "invocation_id": "e-261fe849-1ce6-488b-bd4a-ac259db90ba9",
+            "author": "user",
+            "actions": {
+              "skip_summarization": null,
+              "state_delta": {},
+              "artifact_delta": {},
+              "transfer_to_agent": null,
+              "escalate": null,
+              "requested_auth_configs": {},
+              "requested_tool_confirmations": {},
+              "compaction": null,
+              "end_of_agent": null,
+              "agent_state": null,
+              "rewind_before_invocation_id": null,
+              "render_ui_widgets": null
+            },
+            "long_running_tool_ids": null,
+            "branch": null,
+            "id": "9b4eac1b-3946-455d-b69d-b02dbacd636d",
+            "timestamp": 1774599438.163491
+          },
+          {
+            "model_version": "gemini-3-flash-preview",
+            "content": {
+              "parts": [
+                {
+                  "media_resolution": null,
+                  "code_execution_result": null,
+                  "executable_code": null,
+                  "file_data": null,
+                  "function_call": null,
+                  "function_response": null,
+                  "inline_data": null,
+                  "text": "Confermo di aver già provveduto a salvare correttamente tutti i dettagli nel nostro sistema: Barilla è stata qualificata con un potenziale di 500 lavoratori gestiti tramite competitor.\n\nLa ringrazio ancora per la disponibilità. È stato un vero piacere approfondire la realtà di un'eccellenza come la vostra, sempre all'avanguardia tra innovazione e tradizione a Parma.\n\nLe auguro un buon proseguimento di giornata!",
+                  "thought": null,
+                  "thought_signature": "CpcOAY89a1_280brB5mGqNUtZWUoqGWGWscte2ruvI8CvM7BzTIeffndK_319EdDQyqYmLhOilM3iWbAiPgPO8rtbO05EJowDr0IxPiz1XMCLP1MNGA3gf7yKLYWL6g7os14RL4hskcSHM_a1i-tYtk95wSg4OSo416tJfSUXPGRjj3KtRDypgZ3Lp1R45yeypiKZviixo0WjFSI6Nzk_GkRPCUMrPeITKZzUZggePfx1Kb27nbTEFnyGmnhBNJrSHCB25EO8LE3h_9DFZcrAgDNtzQ-sD9GmpX0Z0Tk5ScLKn2CiJ08KQjGcznHhSOsnzyBq1Z6BopnL-BnxPfXNwANB3_lImoNEIUaDkxhk45INx6rIumQGvcNDRqNOZXgdlgvymE0W2wHEYMGi871wt2yMi_qqcmhdflklhkxrerkJz91FEDfKkxD9ihvHAD79fE6EZ7KRKmAXciaySgMuK4YJMgGrHMr-872k9kTe9p5gxJqxmFHScJU6fA1BNG5EFZq5YgfcXas1YdnLfXZc1BOFFsOjjl959Fo5UH5MYAxsCdc-mzVlMIcJWe8XpR-5NXYf1yOGpDYoRAWVtxYkC9RWJc9OpRj5TxIjN60Gl2EwtaZaR3MT9RLOYIwiHTKKaTHpY4trF_96SVFjBUTSeMifQOoulUVX_GYQ_e9I0WdPQt4n9qpu5R0SeR-MQABceajtHRbfTJU1aVjQuSe_e6dYWdQ3ZbiXl8olMi_NH3bBAx_CCpZn7PDcp4LFPY5bieHs0eBr_7Lm8bwb7_HBHkbLeZjAC9BOWoDPgbTTCP-dgvdGDAI2n-wDV1NM2DttxEjRcBBKVEx4FB7sXS9FCzoJ7n6hN9vajZw6LqkYccPuGoktRGjZLd-sIid3cR6l70G_x033XHZ0XCEKoGyz-BLIAM747rZxbnltX5FBFBv-RJ8ejwYWz0nolxe23GMRjO2nEDQyUZPHJuSMcY1PC2Vxise1dRcM9JM3rjlsncSREje-TMCY-lv35usFutGZuLsX9DBlxcgdSbNHi4HP6Z-Ps-6jU51RLLdF_ScFNTJOWYx_McIf5w4PKmZQYALt2Fuz1LP1knTA1_9YS0TxxT71GPhL0lYJwxafKBzjzb-OQh-4Sf-FDuBzXZ2jOUoWEjrQT6RmQi0AQsvfHiVGqmQz2DULZ8p41DuVHbkCsWES3cbKpmdngawfPetOffOiDzxLqTfFVpv0eoX07rNjLPkL9H-UOq8EunAnI0D9JYmZS78oYJP3rkzu-hzRaHaeNmUqoptkPKMOtfRuXodXnc9tZmoNVz80vw9FwnUOfG_9Ls5x3L4UmZs_XG7OvTLmeViuru0h32k2M8LSUsTJJ3DFDVdmzJHLWo8RvVhQgupdA8DZE6ZPu1fiuebJdSypTNgllRkBZyO6OcqwC7aRJLchEz-YttxGNVxB6KbwxVZ9xZIFrexYs-Qlaa338ncP8g36YZKlNyEjKfoGC7vOvOCWL4SDZLaonzHT7zJCLsORPfzNIgq0oic-kEiT4zlWDaM_jydzhcJM_dNhrrjbwRZ3CMak7mLiuIprKVFBRkASDaJhpA2x6mhnO4wJALhh1GiRmNpvTnoSNtQ29XzUICqsVPbJaK-IhUL_2x968ugoql53Z7fOyFoUbtglTMab-2ajjirH8XM37g2DxdRsYxEDE0Ycvx3MPJSNq-6zkUQw4LmiPCf1cPDKnzL_XHsXdnj7ZijsByjLMspm4REiZHH_zRnwVRgzCB-t8OYN-zK4eL3WPpiBGTHvswzOja10yvwEPqd5f1oEQbBflsCSuVweeFOMAgRMlM7EvmZLZLkBdqhKuHH_3S4G1yD0jfJ4XuwlxzrjoKTXd0FclCnoY_Q9PI8pHs0EM2isJbbayJfJs9Acdkn4-oJVhDqvxjFuvgIaNybdafgxkVbyzLb8qDMe6qpC3-yj52MqCTWehqP3NF1BgbFIkOymxkNubqFcH-uPooWoTq6dFXhrajtyGb2Fcra4g1E422-rFKb440hoUW7V8wPoFsIKPMC_2DUcfbDeNvePBAODFwDWVhs8vl-zLjpFVDnG8XU9ebHsIqXSgPo7DDwM7jq-PUgz-glNN_frzIVacji0UCtYPqKvGVX0TsFTyPHMoGEqLqSC1mWvLyjxmNFzmPKOLO7Qax7wu-cI1jFRsc3DINEb68GtsHTErw-0OYN3eC51iZLR-8XyUsYScaKCzjDebJ-1Tqn4CJnve0xVYO6mNHOqyr32x3bs7V3KRuQG85nEXDsvIkpLLerhTwfAE-C8OTULeJtWwtzGx6EwJA3Rda72yg7MR8EgwZj76QkEqH8hFFiFmf5T9wkXjZvVpB5Da1o9GOJfffFY9sJu_m4o5tJE2Y80Yu17oAtxBXYUwh8l1OP1c7tNH4fOOPQeiVD",
+                  "video_metadata": null,
+                  "tool_call": null,
+                  "tool_response": null
+                }
+              ],
+              "role": "model"
+            },
+            "grounding_metadata": null,
+            "partial": null,
+            "turn_complete": null,
+            "finish_reason": "STOP",
+            "error_code": null,
+            "error_message": null,
+            "interrupted": null,
+            "custom_metadata": {
+              "__llm_request_key__": "7fcb18bf-d7ea-402f-b4bd-8e2b877d5287"
+            },
+            "usage_metadata": {
+              "cache_tokens_details": null,
+              "cached_content_token_count": null,
+              "candidates_token_count": 93,
+              "candidates_tokens_details": [
+                {
+                  "modality": "TEXT",
+                  "token_count": 93
+                }
+              ],
+              "prompt_token_count": 1723,
+              "prompt_tokens_details": [
+                {
+                  "modality": "TEXT",
+                  "token_count": 1723
+                }
+              ],
+              "thoughts_token_count": 436,
+              "tool_use_prompt_token_count": null,
+              "tool_use_prompt_tokens_details": null,
+              "total_token_count": 2252,
+              "traffic_type": "ON_DEMAND"
+            },
+            "live_session_resumption_update": null,
+            "input_transcription": null,
+            "output_transcription": null,
+            "avg_logprobs": -1.9577143972115634,
+            "logprobs_result": null,
+            "cache_metadata": null,
+            "citation_metadata": null,
+            "interaction_id": null,
+            "invocation_id": "e-261fe849-1ce6-488b-bd4a-ac259db90ba9",
+            "author": "qualificatore_commerciale",
+            "actions": {
+              "skip_summarization": null,
+              "state_delta": {
+                "__llm_request_key__": "7fcb18bf-d7ea-402f-b4bd-8e2b877d5287"
+              },
+              "artifact_delta": {},
+              "transfer_to_agent": null,
+              "escalate": null,
+              "requested_auth_configs": {},
+              "requested_tool_confirmations": {},
+              "compaction": null,
+              "end_of_agent": null,
+              "agent_state": null,
+              "rewind_before_invocation_id": null,
+              "render_ui_widgets": null
+            },
+            "long_running_tool_ids": null,
+            "branch": null,
+            "id": "f06c7f4f-d786-4365-9a45-2ada6e4d6110",
+            "timestamp": 1774599438.164424
+          }
+        ],
+        "last_update_time": 1774599438.164424
+      },
+      "user_id": "test_user_2"
+    }
+  ],
+  "creation_timestamp": 1774599735.5882409
+}
