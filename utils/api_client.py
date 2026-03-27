@@ -13,15 +13,18 @@
 # limitations under the License.
 
 import json
+from collections.abc import Generator
+from typing import Any
+
 import requests
-from typing import Optional, Dict, Any, Generator
+
 
 class RandstadApiClient:
     """
     Client sincrono per interagire con l'API dell'Agente Randstad.
     """
 
-    def __init__(self, base_url: str = "http://127.0.0.1:8000", token: Optional[str] = None):
+    def __init__(self, base_url: str = "http://127.0.0.1:8000", token: str | None = None):
         self.base_url = base_url.rstrip("/")
         self.headers = {"Content-Type": "application/json"}
         if token:
@@ -43,12 +46,12 @@ class RandstadApiClient:
         return response.json()["id"]
 
     def chat_stream(
-        self, 
-        user_id: str, 
-        session_id: str, 
-        message: str, 
+        self,
+        user_id: str,
+        session_id: str,
+        message: str,
         app_name: str = "app"
-    ) -> Generator[Dict[str, Any], None, None]:
+    ) -> Generator[dict[str, Any], None, None]:
         """
         Invia un messaggio all'agente e restituisce un generatore di eventi (SSE).
         """

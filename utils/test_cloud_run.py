@@ -12,14 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sys
 import os
 import subprocess
+import sys
 
 # Aggiunge la radice del progetto al path per permettere l'importazione dei moduli
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from utils.api_client import RandstadApiClient
+
 
 def get_gcloud_output(command: list) -> str:
     """Esegue un comando gcloud e restituisce l'output pulito."""
@@ -37,13 +38,13 @@ def main():
     # Parametri di configurazione (modifica se necessario)
     service_name = "randstad-adk-dev"
     region = "us-central1"
-    
+
     print(f"--- 0. Fetching Cloud Run details for {service_name} ---")
-    
+
     # 1. Recupera l'URL del servizio
     print("Fetching Service URL...")
     url = get_gcloud_output([
-        "gcloud", "run", "services", "describe", service_name, 
+        "gcloud", "run", "services", "describe", service_name,
         "--platform", "managed", "--region", region, "--format", "value(status.url)"
     ])
     print(f"✅ Service URL: {url}")
@@ -75,7 +76,7 @@ def main():
     message = "Buongiorno, lavoro con Manpower e abbiamo 25 lavoratori somministrati."
     print(f"\n--- 3. Sending Message: '{message}' ---")
     print("Response: ", end="", flush=True)
-    
+
     try:
         for event in client.chat_stream(user_id, session_id, message):
             content = event.get("content")
@@ -85,7 +86,7 @@ def main():
                         print(part["text"], end="", flush=True)
     except Exception as e:
         print(f"\n❌ Error during streaming: {e}")
-    
+
     print("\n\n--- 4. Sending Feedback ---")
     if client.send_feedback(user_id, session_id, 5, "Test su Cloud Run completato con successo!"):
         print("✅ Feedback sent successfully")

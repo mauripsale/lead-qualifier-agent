@@ -83,15 +83,15 @@ def test_agent_lead_qualification() -> None:
     # Verifichiamo se c'è stata una chiamata a funzione o una conferma testuale
     # Quando l'agente chiama un tool, ADK genera una sequenza di eventi.
     has_tool_call = any(
-        part.function_call is not None 
-        for event in events if event.content and event.content.parts 
+        part.function_call is not None
+        for event in events if event.content and event.content.parts
         for part in event.content.parts
     )
-    
+
     saved_confirmation = any(
-        "Qualificazione salvata con successo" in part.text 
-        for event in events if event.content and event.content.parts 
+        "Qualificazione salvata con successo" in part.text
+        for event in events if event.content and event.content.parts
         for part in event.content.parts if part.text
     )
-    
+
     assert has_tool_call or saved_confirmation, "Agent did not trigger the qualification tool or confirm saving."

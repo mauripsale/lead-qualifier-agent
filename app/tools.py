@@ -14,12 +14,13 @@
 
 """
 Questo modulo definisce gli strumenti (Tools) a disposizione dell'agente.
-Lo strumento principale è salva_qualificazione, il quale permette all'agente di storicizzare
-i risultati della lead qualification all'interno di un database Firestore.
+Include strumenti per la ricerca di informazioni e per il salvataggio dei risultati su Firestore.
 """
 
 import datetime
 import os
+
+from google.adk.tools.google_search_tool import google_search
 from google.cloud import firestore
 
 # Inizializza il client Firestore utilizzando il database specificato dall'ambiente (gestito da Terraform)
@@ -27,13 +28,18 @@ from google.cloud import firestore
 DATABASE_ID = os.getenv("FIRESTORE_DATABASE_ID", "lead-qualifier-db-dev")
 db = firestore.Client(database=DATABASE_ID)
 
-def salva_qualificazione(tipo: str, volume: int) -> str:
+# Esportiamo google_search per renderlo disponibile all'agente
+google_search_tool = google_search
+
+def salva_qualificazione(nome_azienda: str, descrizione_azienda: str, tipo: str, volume: int) -> str:
     """
-    Salva la qualificazione commerciale estratta nel database Firestore.
-    Da chiamare SOLO quando l'utente ha fornito chiaramente sia il tipo di potenziale 
-    (competitor, storico, proxy) sia il numero esatto associato.
+    Salva la qualificazione commerciale estratta nel database Firestore, includendo i dettagli dell'azienda.
+    Da chiamare SOLO quando l'utente ha fornito chiaramente il nome dell'azienda, il tipo di potenziale
+    (competitor, storico, proxy) e il numero esatto associato.
 
     Args:
+        nome_azienda: Il nome dell'azienda identificata.
+        descrizione_azienda: Una breve descrizione dell'azienda ottenuta tramite ricerca.
         tipo: Il tipo di qualificazione. Valori ammessi: 'competitor', 'storico', 'proxy'.
         volume: Il numero di lavoratori stimato o effettivo (intero).
 
@@ -43,17 +49,19 @@ def salva_qualificazione(tipo: str, volume: int) -> str:
     try:
         # Crea un riferimento alla collection 'qualificazioni'
         doc_ref = db.collection("qualificazioni").document()
-        
+
         # Dati da salvare
         data = {
+            "nome_azienda": nome_azienda,
+            "descrizione_azienda": descrizione_azienda,
             "tipo": tipo,
             "volume": volume,
             "timestamp": datetime.datetime.now(tz=datetime.timezone.utc)
         }
-        
+
         # Salva i dati su Firestore
         doc_ref.set(data)
-        
-        return f"Qualificazione salvata con successo su Firestore: {tipo} con volume {volume}."
+
+        return f"Qualificazione salvata con successo per {nome_azienda} su Firestore: {tipo} con volume {volume}."
     except Exception as e:
-        return f"Errore durante il salvataggio su Firestore: {str(e)}"
+        return f"Errore durante il salvataggio su Firestore: {e!s}"
