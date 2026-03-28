@@ -31,6 +31,7 @@ from .tools import salva_qualificazione
 from .prompts import INSTRUCTION
 from .agents.researcher import ricercatore_azienda
 from .app_utils.config import config
+from .rai_service import ResponsibleAIPlugin
 
 # Configurazione ambiente GCP
 _, project_id = google.auth.default()
@@ -73,4 +74,5 @@ root_agent = Agent(
 app = App(
     root_agent=root_agent,
     name=config.get("app.name", "app"),
+    plugins=[ResponsibleAIPlugin()],
 )
