@@ -107,3 +107,4 @@ substitutions:
 options:
   substitutionOption: ALLOW_LOOSE
   logging: CLOUD_LOGGING_ONLY
+  logsBucket: "gs://$PROJECT_ID-$_SERVICE_NAME-prod-logs"
