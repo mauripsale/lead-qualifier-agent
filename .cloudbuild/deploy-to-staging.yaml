@@ -105,7 +105,8 @@ substitutions:
   _REGION: us-central1
   _SERVICE_NAME: randstad-adk
 
+logsBucket: "gs://$PROJECT_ID-$_SERVICE_NAME-staging-logs"
+
 options:
   substitutionOption: ALLOW_LOOSE
   logging: CLOUD_LOGGING_ONLY
-  logsBucket: "gs://$PROJECT_ID-$_SERVICE_NAME-staging-logs"
