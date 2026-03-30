@@ -108,4 +108,3 @@ logsBucket: "gs://$PROJECT_ID-$_SERVICE_NAME-prod-logs"
 
 options:
   substitutionOption: ALLOW_LOOSE
-  logging: GCS_ONLY

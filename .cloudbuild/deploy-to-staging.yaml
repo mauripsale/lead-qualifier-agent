@@ -109,4 +109,3 @@ logsBucket: "gs://$PROJECT_ID-$_SERVICE_NAME-staging-logs"
 
 options:
   substitutionOption: ALLOW_LOOSE
-  logging: GCS_ONLY
