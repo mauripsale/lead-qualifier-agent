@@ -58,5 +58,5 @@ Ask the user: Option A (simple single-project) or Option B (full CI/CD pipeline 
 - **Terraform conflicts** (Error 409): Use `terraform import` instead of retrying creation.
 
 ---
-Test Cloud Build Trigger - 30 Mar 2026
+Test Cloud Build Trigger - 30 Mar 2026 (Retry 2)
 
