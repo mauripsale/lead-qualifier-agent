@@ -71,7 +71,7 @@ steps:
 
 
 substitutions:
-  _REPO_NAME: randstad-adk-repo-dev
+  _REPO_NAME: prod-adk-repo-dev
   _REGION: us-central1
   _SERVICE_NAME: randstad-adk
 
