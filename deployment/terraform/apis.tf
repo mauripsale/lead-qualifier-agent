@@ -26,6 +26,7 @@ locals {
     "telemetry.googleapis.com",
     "firestore.googleapis.com",
     "secretmanager.googleapis.com",
+    "language.googleapis.com",
   ]
 }
 
