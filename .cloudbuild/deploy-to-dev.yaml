@@ -73,7 +73,7 @@ steps:
 substitutions:
   _REPO_NAME: prod-adk-repo-dev
   _REGION: us-central1
-  _SERVICE_NAME: randstad-adk
+  _SERVICE_NAME: prod-adk
 
 options:
   substitutionOption: ALLOW_LOOSE
