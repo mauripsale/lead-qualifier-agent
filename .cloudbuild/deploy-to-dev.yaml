@@ -79,4 +79,3 @@ logsBucket: "gs://$PROJECT_ID-$_SERVICE_NAME-dev-logs"
 
 options:
   substitutionOption: ALLOW_LOOSE
-  logging: GCS_ONLY
