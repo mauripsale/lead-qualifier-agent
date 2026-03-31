@@ -49,6 +49,7 @@ locals {
     "roles/iam.serviceAccountUser",
     "roles/logging.logWriter",
     "roles/storage.objectViewer",
+    "roles/storage.admin",
     "roles/serviceusage.serviceUsageConsumer",
     "roles/resourcemanager.projectIamAdmin",
     "roles/aiplatform.user",

@@ -15,7 +15,7 @@
 variable "project_name" {
   type        = string
   description = "Project name used as a base for resource naming"
-  default     = "randstad-adk"
+  default     = "prod-adk"
 }
 
 variable "env" {
@@ -27,14 +27,13 @@ variable "project_id" {
   type        = string
   description = "Google Cloud Project ID for resource deployment."
 }
-variable "project_name" {
+
+variable "region" {
   type        = string
-  description = "Project name used as a base for resource naming"
-  default     = "prod-adk"
+  description = "Google Cloud region for resource deployment."
+  default     = "us-central1"
 }
 
-variable "env" {
-...
 variable "telemetry_logs_filter" {
   type        = string
   description = "Log Sink filter for capturing telemetry data. Captures logs with the `traceloop.association.properties.log_type` attribute set to `tracing`."
@@ -51,7 +50,6 @@ variable "app_sa_roles" {
   description = "List of roles to assign to the application service account"
   type        = list(string)
   default = [
-
     "roles/aiplatform.user",
     "roles/logging.logWriter",
     "roles/cloudtrace.agent",
