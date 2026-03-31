@@ -15,7 +15,7 @@
 variable "project_name" {
   type        = string
   description = "Project name used as a base for resource naming"
-  default     = "randstad-adk"
+  default     = "prod-adk"
 }
 
 variable "env" {
@@ -37,20 +37,19 @@ variable "region" {
 variable "telemetry_logs_filter" {
   type        = string
   description = "Log Sink filter for capturing telemetry data. Captures logs with the `traceloop.association.properties.log_type` attribute set to `tracing`."
-  default     = "labels.service_name=\"randstad-adk\" labels.type=\"agent_telemetry\""
+  default     = "labels.service_name=\"prod-adk\" labels.type=\"agent_telemetry\""
 }
 
 variable "feedback_logs_filter" {
   type        = string
   description = "Log Sink filter for capturing feedback data. Captures logs where the `log_type` field is `feedback`."
-  default     = "jsonPayload.log_type=\"feedback\" jsonPayload.service_name=\"randstad-adk\""
+  default     = "jsonPayload.log_type=\"feedback\" jsonPayload.service_name=\"prod-adk\""
 }
 
 variable "app_sa_roles" {
   description = "List of roles to assign to the application service account"
   type        = list(string)
   default = [
-
     "roles/aiplatform.user",
     "roles/logging.logWriter",
     "roles/cloudtrace.agent",
