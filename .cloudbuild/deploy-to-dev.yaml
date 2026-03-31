@@ -77,5 +77,5 @@ substitutions:
 
 options:
   substitutionOption: ALLOW_LOOSE
-  logging: CLOUD_LOGGING_ONLY
-  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+  logging: GCS_ONLY
+  logsBucket: "gs://qwiklabs-asl-04-7d8e38e77852-prod-adk-dev-logs"
