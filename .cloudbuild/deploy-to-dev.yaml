@@ -12,9 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+  substitutionOption: ALLOW_LOOSE
+
+substitutions:
+  _REPO_NAME: prod-adk-repo-dev
+  _REGION: us-central1
+  _SERVICE_NAME: prod-adk
+
 steps:
   # 1) Install dependencies using the official uv image
-  # We use the same image for subsequent steps to ensure uv is available
   - name: "python:3.12-slim"
     id: install-dependencies
     entrypoint: /bin/bash
@@ -25,7 +33,7 @@ steps:
     env:
       - 'PATH=/usr/local/bin:/usr/bin:~/.local/bin'
 
-  #2) Run unit tests using pytest
+  # 2) Run unit tests using pytest
   - name: "python:3.12-slim"
     id: unit-tests
     entrypoint: /bin/bash
@@ -68,13 +76,3 @@ steps:
           --max-instances 10 \
           --min-instances 0 \
           --update-env-vars "FIRESTORE_DATABASE_ID=lead-qualifier-db-dev,LOGS_BUCKET_NAME=$PROJECT_ID-$_SERVICE_NAME-dev-logs,OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT=NO_CONTENT"
-
-
-substitutions:
-  _REPO_NAME: prod-adk-repo-dev
-  _REGION: us-central1
-  _SERVICE_NAME: prod-adk
-
-options:
-  substitutionOption: ALLOW_LOOSE
-  logging: CLOUD_LOGGING_ONLY
