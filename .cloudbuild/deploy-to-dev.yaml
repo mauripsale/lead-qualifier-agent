@@ -12,8 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Top-level logs bucket specification (Required for user-specified service accounts)
+logsBucket: "gs://qwiklabs-asl-04-7d8e38e77852-prod-adk-dev-logs"
+
 options:
-  logging: CLOUD_LOGGING_ONLY
+  logging: GCS_ONLY
   substitutionOption: ALLOW_LOOSE
 
 substitutions:
