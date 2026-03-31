@@ -77,5 +77,4 @@ substitutions:
 
 options:
   substitutionOption: ALLOW_LOOSE
-  logging: GCS_ONLY
-  logsBucket: "gs://qwiklabs-asl-04-7d8e38e77852-prod-adk-dev-logs"
+  logging: CLOUD_LOGGING_ONLY
