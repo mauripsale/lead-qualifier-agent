@@ -62,7 +62,11 @@ class ChatStreamUser(HttpUser):
             name="Create Session"
         ) as session_response:
             if session_response.status_code != 200 and session_response.status_code != 201:
-                session_response.failure(f"Failed to create session: {session_response.status_code}")
+                error_msg = f"Failed to create session: {session_response.status_code}"
+                if session_response.error:
+                    error_msg += f" - Error: {session_response.error}"
+                logger.error(error_msg)
+                session_response.failure(error_msg)
                 return
 
             try:
