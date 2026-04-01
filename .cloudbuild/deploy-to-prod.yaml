@@ -82,7 +82,7 @@ steps:
     args:
       - "build"
       - "-t"
-      - "$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/$_PROJECT_NAME-prod:$TAG_NAME"
+      - "$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/$_SERVICE_NAME-prod:$TAG_NAME"
       - "."
 
   # 6) Push Docker Image to Artifact Registry
@@ -90,7 +90,7 @@ steps:
     id: push-image
     args:
       - "push"
-      - "$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/$_PROJECT_NAME-prod:$TAG_NAME"
+      - "$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/$_SERVICE_NAME-prod:$TAG_NAME"
 
   # 7) Deploy to PRODUCTION on Cloud Run
   - name: "gcr.io/cloud-builders/gcloud"
@@ -99,12 +99,12 @@ steps:
     args:
       - "-c"
       - |
-        gcloud beta run deploy $_PROJECT_NAME-prod \
-          --image $_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/$_PROJECT_NAME-prod:$TAG_NAME \
+        gcloud beta run deploy $_SERVICE_NAME-prod \
+          --image $_REGION-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/$_SERVICE_NAME-prod:$TAG_NAME \
           --region $_REGION \
           --project $PROJECT_ID \
           --no-allow-unauthenticated \
-          --service-account "$_PROJECT_NAME-app-prod@$PROJECT_ID.iam.gserviceaccount.com" \
+          --service-account "$_SERVICE_NAME-app-prod@$PROJECT_ID.iam.gserviceaccount.com" \
           --max-instances 10 \
           --min-instances 1 \
           --session-affinity \
