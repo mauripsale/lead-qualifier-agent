@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import pytest
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock, AsyncMock, patch
 from google.adk.models.llm_response import LlmResponse
 from google.genai import types
 from app.rai_service import ResponsibleAIPlugin
@@ -28,7 +28,8 @@ def mock_ctx():
 
 @pytest.fixture
 def plugin():
-    with patch("google.cloud.language_v1.LanguageServiceClient"), \
+    # Patch the Async client instead of the sync one
+    with patch("google.cloud.language_v1.LanguageServiceAsyncClient"), \
          patch("app.rai_service.config") as mock_config:
         # Mock della configurazione
         mock_config.get.side_effect = lambda key, default: {
@@ -38,7 +39,10 @@ def plugin():
             "rai.messages.input_blocked": "INPUT_BLOCKED"
         }.get(key, default)
         
-        return ResponsibleAIPlugin()
+        p = ResponsibleAIPlugin()
+        # Initialize moderate_text as an AsyncMock
+        p.client.moderate_text = AsyncMock()
+        return p
 
 @pytest.mark.asyncio
 async def test_after_model_callback_no_violation(plugin, mock_ctx):
