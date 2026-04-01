@@ -48,7 +48,7 @@ class ResponsibleAIPlugin(BasePlugin):
 
     def __init__(self):
         super().__init__(name="responsible_ai")
-        self.client = language_v1.LanguageServiceClient()
+        self.client = language_v1.LanguageServiceAsyncClient()
         
         # Carichiamo le configurazioni dal file YAML dell'ambiente
         self.threshold = config.get("rai.threshold", 0.6)
@@ -78,10 +78,7 @@ class ResponsibleAIPlugin(BasePlugin):
         if not user_message or not user_message.parts:
             return None
 
-        text_to_moderate = ""
-        for part in user_message.parts:
-            if part.text:
-                text_to_moderate += part.text
+        text_to_moderate = " ".join(part.text for part in user_message.parts if part.text)
 
         if not text_to_moderate:
             return None
@@ -91,7 +88,7 @@ class ResponsibleAIPlugin(BasePlugin):
                 content=text_to_moderate,
                 type_=language_v1.Document.Type.PLAIN_TEXT
             )
-            response = self.client.moderate_text(request={"document": document})
+            response = await self.client.moderate_text(request={"document": document})
 
             blocked = False
             for category in response.moderation_categories:
@@ -110,7 +107,12 @@ class ResponsibleAIPlugin(BasePlugin):
 
         except Exception as e:
             logger.error(f"Errore durante la moderazione RAI (input): {e}")
-            return None
+            # Fail-closed approach: block input if moderation fails
+            invocation_context.session.state["rai_input_blocked"] = True
+            return types.Content(
+                role="user",
+                parts=[types.Part.from_text(text="[BLOCKED BY RAI ERROR]")]
+            )
 
         return None
 
@@ -144,10 +146,7 @@ class ResponsibleAIPlugin(BasePlugin):
         if not llm_response.content or not llm_response.content.parts:
             return None
 
-        text_to_moderate = ""
-        for part in llm_response.content.parts:
-            if part.text:
-                text_to_moderate += part.text
+        text_to_moderate = " ".join(part.text for part in llm_response.content.parts if part.text)
 
         if not text_to_moderate:
             return None
@@ -157,7 +156,7 @@ class ResponsibleAIPlugin(BasePlugin):
                 content=text_to_moderate,
                 type_=language_v1.Document.Type.PLAIN_TEXT
             )
-            response = self.client.moderate_text(request={"document": document})
+            response = await self.client.moderate_text(request={"document": document})
 
             blocked = False
             triggered_categories = []
@@ -179,6 +178,11 @@ class ResponsibleAIPlugin(BasePlugin):
 
         except Exception as e:
             logger.error(f"Errore durante la moderazione RAI: {e}")
-            return None
+            # Fail-closed approach: block output if moderation fails
+            new_content = types.Content(
+                role="model",
+                parts=[types.Part.from_text(text=self.fallback_message)]
+            )
+            return LlmResponse(content=new_content)
 
         return None
