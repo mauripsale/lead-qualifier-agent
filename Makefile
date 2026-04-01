@@ -153,6 +153,7 @@ load-test:
 		$(eval ID_TOKEN := $(shell gcloud auth print-identity-token -q)), \
 		$(eval ID_TOKEN := ""))
 	_ID_TOKEN=$(ID_TOKEN) LOCUST_SKIP_CERT_VERIFY=$(or $(SKIP_VERIFY),false) uv run locust -f tests/load_test/load_test.py \
+
 		-H $(SERVICE_URL) \
 		$(if $(DURATION),--headless -u $(or $(USERS),10) -r $(or $(RATE),2) -t $(DURATION),) \
 		--csv=tests/load_test/.results/results \
