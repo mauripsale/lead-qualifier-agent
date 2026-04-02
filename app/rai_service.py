@@ -48,7 +48,7 @@ class ResponsibleAIPlugin(BasePlugin):
 
     def __init__(self):
         super().__init__(name="responsible_ai")
-        self.client = language_v1.LanguageServiceAsyncClient()
+        self._client: Optional[language_v1.LanguageServiceAsyncClient] = None
         
         # Carichiamo le configurazioni dal file YAML dell'ambiente
         self.threshold = config.get("rai.threshold", 0.6)
@@ -65,6 +65,15 @@ class ResponsibleAIPlugin(BasePlugin):
         )
         
         logger.info(f"RAI Plugin initialized with threshold {self.threshold}")
+
+    @property
+    def client(self) -> language_v1.LanguageServiceAsyncClient:
+        """
+        Inizializzazione pigra del client per evitare problemi di event loop (specialmente nei test).
+        """
+        if self._client is None:
+            self._client = language_v1.LanguageServiceAsyncClient()
+        return self._client
 
     async def on_user_message_callback(
         self, 
@@ -111,7 +120,7 @@ class ResponsibleAIPlugin(BasePlugin):
             invocation_context.session.state["rai_input_blocked"] = True
             return types.Content(
                 role="user",
-                parts=[types.Part.from_text(text="[BLOCKED BY RAI ERROR]")]
+                parts=[types.Part.from_text(text="[BLOCKED BY RAI]")]
             )
 
         return None
