@@ -21,7 +21,6 @@ import datetime
 import os
 
 from google.adk.tools.google_search_tool import google_search
-from google.adk.tools.load_memory_tool import load_memory as adk_load_memory
 from google.cloud import firestore
 from app.app_utils.config import config
 
@@ -31,38 +30,6 @@ db = firestore.Client(database=DATABASE_ID)
 
 # Esportiamo google_search per renderlo disponibile all'agente
 google_search_tool = google_search
-
-async def ricerca_in_memoria(query: str) -> str:
-    """
-    Cerca informazioni rilevanti nelle conversazioni passate dell'utente.
-    Da usare quando l'utente fa riferimento a fatti o preferenze discussi in precedenza.
-
-    Args:
-        query: La stringa di ricerca per trovare fatti o preferenze passate.
-
-    Returns:
-        Un riassunto testuale delle memorie trovate, o un messaggio di 'nessun ricordo trovato'.
-    """
-    try:
-        # Chiamata al tool originale di ADK
-        response = await adk_load_memory(query=query)
-        
-        if not response or not response.memories:
-            return "Nessun ricordo pertinente trovato nelle conversazioni passate."
-        
-        results = []
-        for memory in response.memories:
-            if memory.content and memory.content.parts:
-                text = " ".join(part.text for part in memory.content.parts if part.text)
-                results.append(f"- {text}")
-        
-        if not results:
-            return "Ho trovato delle sessioni passate ma nessun dettaglio testuale utile."
-            
-        return "Ecco cosa ricordo dalle conversazioni precedenti:\n" + "\n".join(results)
-        
-    except Exception as e:
-        return f"Spiacente, si è verificato un errore tecnico nel recupero della memoria: {e}"
 
 def salva_qualificazione(nome_azienda: str, descrizione_azienda: str, tipo: str, volume: int) -> str:
     """
