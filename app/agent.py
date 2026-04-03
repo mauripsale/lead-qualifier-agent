@@ -32,10 +32,25 @@ from .prompts import INSTRUCTION, MEMORY_INSTRUCTION_EXTENSION
 from .agents.researcher import ricercatore_azienda
 from .app_utils.config import config
 from .rai_service import ResponsibleAIPlugin
-from .app_utils.memory_plugin import MemoryPlugin
 import logging
 
 logger = logging.getLogger(__name__)
+
+async def auto_save_session_to_memory_callback(callback_context):
+    """
+    Pattern ufficiale ADK per il salvataggio automatico in memoria.
+    Viene invocato dopo l'esecuzione dell'agente.
+    """
+    try:
+        # Accesso al memory service tramite l'invocation context interno
+        inv_ctx = callback_context._invocation_context
+        if inv_ctx.memory_service:
+            # Stampo direttamente su stdout per visibilità immediata nel playground
+            print(f"\n💾 [MEMORY] Ingestione sessione {inv_ctx.session.id} per utente {inv_ctx.session.user_id}...")
+            await inv_ctx.memory_service.add_session_to_memory(inv_ctx.session)
+            print("✅ [MEMORY] Salvataggio completato.\n")
+    except Exception as e:
+        print(f"❌ [MEMORY] Errore critico nel callback: {e}")
 
 # Configurazione ambiente GCP
 _, project_id = google.auth.default()
@@ -74,13 +89,11 @@ root_agent = Agent(
         AgentTool(ricercatore_azienda), # Delegazione modulare
         ricerca_in_memoria # Wrapper semplificato per la memoria
     ],
+    after_agent_callback=auto_save_session_to_memory_callback,
 )
 
 app = App(
     root_agent=root_agent,
     name=config.get("app.name", "app"),
-    plugins=[
-        ResponsibleAIPlugin(),
-        MemoryPlugin()
-    ],
+    plugins=[ResponsibleAIPlugin()],
 )
