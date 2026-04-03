@@ -27,6 +27,10 @@ from google.cloud import logging as google_cloud_logging
 from app.app_utils.telemetry import setup_telemetry
 from app.app_utils.typing import Feedback
 from app.app_utils.config import config
+from app.app_utils.firestore_session import register_firestore_session_service
+
+# Registra il provider Firestore nel framework ADK
+register_firestore_session_service()
 
 setup_telemetry()
 _, project_id = google.auth.default()
@@ -36,12 +40,14 @@ allow_origins = (
     os.getenv("ALLOW_ORIGINS", "").split(",") if os.getenv("ALLOW_ORIGINS") else None
 )
 
-# Artifact bucket for ADK (created by Terraform, passed via env var)
+# Configurazione backend di persistenza (passata tramite env var)
 logs_bucket_name = os.environ.get("LOGS_BUCKET_NAME")
+firestore_db_id = os.environ.get("FIRESTORE_DATABASE_ID", "(default)")
 
 AGENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# In-memory session configuration - no persistent storage
-session_service_uri = None
+
+# Session configuration - Persistence to Firestore
+session_service_uri = f"firestore://{project_id}/{firestore_db_id}"
 
 artifact_service_uri = f"gs://{logs_bucket_name}" if logs_bucket_name else None
 
