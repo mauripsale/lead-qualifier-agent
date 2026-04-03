@@ -43,11 +43,12 @@ allow_origins = (
 # Configurazione backend di persistenza (passata tramite env var)
 logs_bucket_name = os.environ.get("LOGS_BUCKET_NAME")
 firestore_db_id = os.environ.get("FIRESTORE_DATABASE_ID", "(default)")
+firestore_sessions_db_id = os.environ.get("FIRESTORE_SESSIONS_DATABASE_ID", "(default)")
 
 AGENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Session configuration - Persistence to Firestore
-session_service_uri = f"firestore://{project_id}/{firestore_db_id}"
+# Session configuration - Persistence to Dedicated Sessions Firestore DB
+session_service_uri = f"firestore://{project_id}/{firestore_sessions_db_id}"
 
 artifact_service_uri = f"gs://{logs_bucket_name}" if logs_bucket_name else None
 

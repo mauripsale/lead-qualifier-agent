@@ -12,9 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Database for Business Data (Qualifications)
 resource "google_firestore_database" "database" {
   project     = var.project_id
   name        = "lead-qualifier-db-${var.env}"
+  location_id = var.region
+  type        = "FIRESTORE_NATIVE"
+
+  depends_on = [google_project_service.services]
+}
+
+# Database for Infrastructure Data (ADK Chat Sessions)
+resource "google_firestore_database" "sessions_database" {
+  project     = var.project_id
+  name        = "adk-sessions-db-${var.env}"
   location_id = var.region
   type        = "FIRESTORE_NATIVE"
 
