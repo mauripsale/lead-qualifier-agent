@@ -17,38 +17,32 @@ from opentelemetry import trace
 from google.adk.plugins.base_plugin import BasePlugin
 
 if TYPE_CHECKING:
-    from google.adk.agents.callback_context import CallbackContext
-    from google.adk.agents.base_agent import BaseAgent
+    from google.adk.agents.invocation_context import InvocationContext
 
 class SessionTelemetryPlugin(BasePlugin):
     """
     Un plugin globale per iniettare attributi custom di telemetria (come il session_id)
-    in tutti gli span di OpenTelemetry generati durante un'invocazione.
+    nello span radice 'invocation' di OpenTelemetry.
     """
 
     def __init__(self, **kwargs: Any):
-        # ADK passa argomenti come 'name' durante il caricamento dinamico via stringa
         super().__init__(name=kwargs.get("name", "session_telemetry_plugin"))
 
-    async def before_agent_callback(
-        self, *, agent: "BaseAgent", callback_context: "CallbackContext"
+    async def before_run_callback(
+        self, *, invocation_context: "InvocationContext"
     ) -> Optional[None]:
         """
-        Intercetta l'inizio dell'esecuzione di un agente e aggiunge il session_id
-        allo span corrente di OpenTelemetry.
+        Intercetta l'inizio dell'intera invocazione (prima degli agenti) e 
+        aggiunge il session_id allo span 'invocation' di OpenTelemetry.
         """
-        # Recupera lo span corrente (creato dal framework ADK)
         current_span = trace.get_current_span()
         
         if current_span and current_span.is_recording():
-            session_id = callback_context.session.id
+            session_id = invocation_context.session.id
             if session_id:
-                # Aggiunge l'attributo allo span. 
-                # Il prefisso 'app.' è una best practice per attributi custom.
                 current_span.set_attribute("app.session_id", session_id)
                 
-            # Puoi aggiungere anche l'ID utente se utile
-            user_id = callback_context.session.user_id
+            user_id = invocation_context.session.user_id
             if user_id:
                 current_span.set_attribute("app.user_id", user_id)
 
