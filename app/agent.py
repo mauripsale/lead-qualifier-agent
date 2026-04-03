@@ -27,12 +27,11 @@ from google.adk.models import Gemini
 from google.adk.tools import AgentTool
 from google.genai import types
 
-from .tools import salva_qualificazione
+from .tools import salva_qualificazione, ricerca_in_memoria
 from .prompts import INSTRUCTION, MEMORY_INSTRUCTION_EXTENSION
 from .agents.researcher import ricercatore_azienda
 from .app_utils.config import config
 from .rai_service import ResponsibleAIPlugin
-from google.adk.tools.load_memory_tool import load_memory
 import logging
 
 logger = logging.getLogger(__name__)
@@ -89,7 +88,7 @@ root_agent = Agent(
     tools=[
         salva_qualificazione,
         AgentTool(ricercatore_azienda), # Delegazione modulare
-        load_memory # Tool per interrogare la memoria a lungo termine
+        ricerca_in_memoria # Wrapper semplificato per la memoria
     ],
     after_agent_callback=auto_save_session_to_memory_callback,
 )
