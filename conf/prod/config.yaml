@@ -11,6 +11,10 @@ env:
   GOOGLE_CLOUD_LOCATION: "global"
   GOOGLE_GENAI_USE_VERTEXAI: "True"
 
+firestore:
+  database_id: "lead-qualifier-db-prod"
+  sessions_database_id: "adk-sessions-db-prod"
+
 agents:
   root:
     name: "qualificatore_commerciale"

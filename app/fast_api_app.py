@@ -41,15 +41,19 @@ allow_origins = (
     os.getenv("ALLOW_ORIGINS", "").split(",") if os.getenv("ALLOW_ORIGINS") else None
 )
 
-# Configurazione backend di persistenza (passata tramite env var)
+# Configurazione backend di persistenza
 logs_bucket_name = os.environ.get("LOGS_BUCKET_NAME")
-firestore_db_id = os.environ.get("FIRESTORE_DATABASE_ID", "(default)")
-firestore_sessions_db_id = os.environ.get("FIRESTORE_SESSIONS_DATABASE_ID", "(default)")
+
+# Leggiamo i nomi dei database dalla configurazione YAML
+firestore_sessions_db_id = config.get("firestore.sessions_database_id")
 
 AGENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Session configuration - Persistence to Dedicated Sessions Firestore DB
-session_service_uri = f"firestore://{project_id}/{firestore_sessions_db_id}"
+# Se firestore_sessions_db_id è presente, usiamo Firestore, altrimenti SQLite locale (None)
+if firestore_sessions_db_id:
+    session_service_uri = f"firestore://{project_id}/{firestore_sessions_db_id}"
+else:
+    session_service_uri = None
 
 artifact_service_uri = f"gs://{logs_bucket_name}" if logs_bucket_name else None
 
