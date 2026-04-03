@@ -53,6 +53,7 @@ locals {
     "roles/serviceusage.serviceUsageConsumer",
     "roles/resourcemanager.projectIamAdmin",
     "roles/aiplatform.user",
+    "roles/datastore.user",
   ]
 }
 
