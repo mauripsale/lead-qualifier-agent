@@ -22,10 +22,10 @@ import os
 
 from google.adk.tools.google_search_tool import google_search
 from google.cloud import firestore
+from app.app_utils.config import config
 
-# Inizializza il client Firestore utilizzando il database specificato dall'ambiente (gestito da Terraform)
-# Fallback per compatibilità locale se la variabile non è impostata
-DATABASE_ID = os.getenv("FIRESTORE_DATABASE_ID", "lead-qualifier-db-dev")
+# Inizializza il client Firestore utilizzando il database specificato nella configurazione YAML
+DATABASE_ID = config.get("firestore.database_id", "lead-qualifier-db-dev")
 db = firestore.Client(database=DATABASE_ID)
 
 # Esportiamo google_search per renderlo disponibile all'agente

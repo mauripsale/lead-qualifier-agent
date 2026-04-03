@@ -1,3 +1,6 @@
+telemetry:
+  namespace: "lead-qualifier-agent"
+
 app:
   name: "app"
 
@@ -7,6 +10,10 @@ fastapi:
 env:
   GOOGLE_CLOUD_LOCATION: "global"
   GOOGLE_GENAI_USE_VERTEXAI: "True"
+
+firestore:
+  database_id: "lead-qualifier-db-staging"
+  sessions_database_id: "adk-sessions-db-staging"
 
 agents:
   root:
