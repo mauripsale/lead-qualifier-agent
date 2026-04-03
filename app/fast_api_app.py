@@ -28,6 +28,7 @@ from app.app_utils.telemetry import setup_telemetry
 from app.app_utils.typing import Feedback
 from app.app_utils.config import config
 from app.app_utils.firestore_session import register_firestore_session_service
+from app.app_utils.telemetry_plugin import SessionTelemetryPlugin
 
 # Registra il provider Firestore nel framework ADK
 register_firestore_session_service()
@@ -59,12 +60,16 @@ enable_web_ui = config.get("fastapi.enable_web_ui", True)
 # Inizializza i plugin custom globali passandoli come stringhe (module.path.ClassName)
 extra_plugins = ["app.app_utils.telemetry_plugin.SessionTelemetryPlugin"]
 
+# Usa lo schema memory:// per abilitare InMemoryMemoryService
+memory_service_uri = "memory://"
+
 app: FastAPI = get_fast_api_app(
     agents_dir=AGENT_DIR,
     web=enable_web_ui,
     artifact_service_uri=artifact_service_uri,
     allow_origins=allow_origins,
     session_service_uri=session_service_uri,
+    memory_service_uri=memory_service_uri,
     otel_to_cloud=True,
     extra_plugins=extra_plugins,
 )

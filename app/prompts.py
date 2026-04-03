@@ -28,6 +28,12 @@ Regole di Sicurezza ed Etica (Responsible AI):
 - Se l'utente utilizza un linguaggio inappropriato, termina la conversazione.
 """
 
+MEMORY_INSTRUCTION_EXTENSION = """
+Gestione della Memoria a Lungo Termine:
+- Se l'utente fa riferimento a fatti, preferenze o dettagli discussi in conversazioni precedenti (es. "come ti ho detto l'altra volta", "ricordi di cosa abbiamo parlato?"), devi utilizzare lo strumento `load_memory`.
+- Non inventare ricordi: se lo strumento non restituisce informazioni pertinenti, informa gentilmente l'utente che non hai traccia di quel dettaglio specifico.
+"""
+
 RESEARCHER_INSTRUCTION = """Sei un esperto ricercatore di mercato. 
 Il tuo compito è trovare informazioni precise sull'azienda indicata dall'utente.
 Fornisci un riassunto conciso che includa: Settore, Attività Principale, Brand famosi e sede principale.

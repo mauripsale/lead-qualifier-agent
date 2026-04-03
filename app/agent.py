@@ -28,10 +28,31 @@ from google.adk.tools import AgentTool
 from google.genai import types
 
 from .tools import salva_qualificazione
-from .prompts import INSTRUCTION
+from .prompts import INSTRUCTION, MEMORY_INSTRUCTION_EXTENSION
 from .agents.researcher import ricercatore_azienda
 from .app_utils.config import config
 from .rai_service import ResponsibleAIPlugin
+from google.adk.tools.load_memory_tool import load_memory
+import logging
+
+logger = logging.getLogger(__name__)
+
+async def auto_save_session_to_memory_callback(*, callback_context, **kwargs):
+    """
+    Callback che salva la sessione corrente nella memoria a lungo termine
+    alla fine di ogni interazione dell'agente.
+    """
+    try:
+        # Recupera il memory_service dal contesto dell'invocazione
+        memory_service = callback_context._invocation_context.memory_service
+        if memory_service:
+            await memory_service.add_session_to_memory(
+                callback_context._invocation_context.session
+            )
+            logger.info("Sessione salvata con successo nel MemoryService.")
+    except Exception as e:
+        logger.error(f"Errore durante il salvataggio della sessione in memoria: {e}")
+
 
 # Configurazione ambiente GCP
 _, project_id = google.auth.default()
@@ -64,11 +85,13 @@ root_agent = Agent(
             safety_settings=get_safety_settings(),
         )
     ),
-    instruction=INSTRUCTION,
+    instruction=INSTRUCTION + MEMORY_INSTRUCTION_EXTENSION,
     tools=[
         salva_qualificazione,
-        AgentTool(ricercatore_azienda) # Delegazione modulare
+        AgentTool(ricercatore_azienda), # Delegazione modulare
+        load_memory # Tool per interrogare la memoria a lungo termine
     ],
+    after_agent_callback=auto_save_session_to_memory_callback,
 )
 
 app = App(
