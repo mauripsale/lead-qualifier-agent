@@ -32,26 +32,10 @@ from .prompts import INSTRUCTION, MEMORY_INSTRUCTION_EXTENSION
 from .agents.researcher import ricercatore_azienda
 from .app_utils.config import config
 from .rai_service import ResponsibleAIPlugin
+from .app_utils.memory_plugin import MemoryPlugin
 import logging
 
 logger = logging.getLogger(__name__)
-
-async def auto_save_session_to_memory_callback(*, callback_context, **kwargs):
-    """
-    Callback che salva la sessione corrente nella memoria a lungo termine
-    alla fine di ogni interazione dell'agente.
-    """
-    try:
-        # Recupera il memory_service dal contesto dell'invocazione
-        memory_service = callback_context._invocation_context.memory_service
-        if memory_service:
-            await memory_service.add_session_to_memory(
-                callback_context._invocation_context.session
-            )
-            logger.info("Sessione salvata con successo nel MemoryService.")
-    except Exception as e:
-        logger.error(f"Errore durante il salvataggio della sessione in memoria: {e}")
-
 
 # Configurazione ambiente GCP
 _, project_id = google.auth.default()
@@ -90,11 +74,13 @@ root_agent = Agent(
         AgentTool(ricercatore_azienda), # Delegazione modulare
         ricerca_in_memoria # Wrapper semplificato per la memoria
     ],
-    after_agent_callback=auto_save_session_to_memory_callback,
 )
 
 app = App(
     root_agent=root_agent,
     name=config.get("app.name", "app"),
-    plugins=[ResponsibleAIPlugin()],
+    plugins=[
+        ResponsibleAIPlugin(),
+        MemoryPlugin()
+    ],
 )
