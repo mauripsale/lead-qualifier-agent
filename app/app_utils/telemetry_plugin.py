@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Optional, TYPE_CHECKING
+from typing import Any, Optional, TYPE_CHECKING
 from opentelemetry import trace
 from google.adk.plugins.base_plugin import BasePlugin
 
@@ -26,8 +26,9 @@ class SessionTelemetryPlugin(BasePlugin):
     in tutti gli span di OpenTelemetry generati durante un'invocazione.
     """
 
-    def __init__(self):
-        super().__init__(name="session_telemetry_plugin")
+    def __init__(self, **kwargs: Any):
+        # ADK passa argomenti come 'name' durante il caricamento dinamico via stringa
+        super().__init__(name=kwargs.get("name", "session_telemetry_plugin"))
 
     async def before_agent_callback(
         self, *, agent: "BaseAgent", callback_context: "CallbackContext"
