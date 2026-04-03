@@ -1,3 +1,6 @@
+telemetry:
+  namespace: "lead-qualifier-agent"
+
 app:
   name: "app"
 
