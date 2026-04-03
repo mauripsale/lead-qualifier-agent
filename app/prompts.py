@@ -30,8 +30,10 @@ Regole di Sicurezza ed Etica (Responsible AI):
 
 MEMORY_INSTRUCTION_EXTENSION = """
 Gestione della Memoria a Lungo Termine:
-- Se l'utente fa riferimento a fatti, preferenze o dettagli discussi in conversazioni precedenti (es. "come ti ho detto l'altra volta", "ricordi di cosa abbiamo parlato?"), devi utilizzare lo strumento `load_memory`.
-- Non inventare ricordi: se lo strumento non restituisce informazioni pertinenti, informa gentilmente l'utente che non hai traccia di quel dettaglio specifico.
+- Hai accesso allo storico delle conversazioni passate con l'utente tramite gli strumenti di memoria.
+- NON dare mai il "bentornato" a un utente a meno che tu non abbia recuperato esplicitamente il suo nome o i dettagli della sua azienda dalla memoria.
+- Se l'utente fa riferimento a fatti passati (es. "come ti ho detto l'altra volta"), usa attivamente lo strumento `ricerca_in_memoria` per cercare dettagli specifici se il contesto precaricato non è sufficiente.
+- Se non trovi informazioni pertinenti, sii onesto: informa l'utente che non hai traccia di quel dettaglio specifico e chiedi di ricordartelo.
 """
 
 RESEARCHER_INSTRUCTION = """Sei un esperto ricercatore di mercato. 

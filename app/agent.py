@@ -32,6 +32,7 @@ from .prompts import INSTRUCTION, MEMORY_INSTRUCTION_EXTENSION
 from .agents.researcher import ricercatore_azienda
 from .app_utils.config import config
 from .rai_service import ResponsibleAIPlugin
+from google.adk.tools.preload_memory_tool import PreloadMemoryTool
 import logging
 
 logger = logging.getLogger(__name__)
@@ -87,7 +88,8 @@ root_agent = Agent(
     tools=[
         salva_qualificazione,
         AgentTool(ricercatore_azienda), # Delegazione modulare
-        ricerca_in_memoria # Wrapper semplificato per la memoria
+        ricerca_in_memoria, # Wrapper semplificato per la memoria
+        PreloadMemoryTool() # Recupera automaticamente i ricordi recenti all'avvio
     ],
     after_agent_callback=auto_save_session_to_memory_callback,
 )
