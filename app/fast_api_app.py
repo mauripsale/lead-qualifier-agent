@@ -45,15 +45,12 @@ allow_origins = (
 logs_bucket_name = os.environ.get("LOGS_BUCKET_NAME")
 
 # Leggiamo i nomi dei database dalla configurazione YAML
-firestore_sessions_db_id = config.get("firestore.sessions_database_id")
+firestore_sessions_db_id = config.get("firestore.sessions_database_id", "adk-sessions-db-dev")
 
 AGENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Se firestore_sessions_db_id è presente, usiamo Firestore, altrimenti SQLite locale (None)
-if firestore_sessions_db_id:
-    session_service_uri = f"firestore://{project_id}/{firestore_sessions_db_id}"
-else:
-    session_service_uri = None
+# Usiamo sempre Firestore come prima scelta per le sessioni permanenti
+session_service_uri = f"firestore://{project_id}/{firestore_sessions_db_id}"
 
 artifact_service_uri = f"gs://{logs_bucket_name}" if logs_bucket_name else None
 
